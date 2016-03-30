@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Bubble Animation</title>
+  <style type="text/css">
+  .circle {
+    width: 60px;
+    height: 60px;
+    background-color: #096;
+    border-radius: 50%;
+  }
+
+  .bubble {
+    animation: bubble 1s infinite;
+  }
+
+  @-webkit-keyframes bubble {
+    from {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+      opacity: .6;
+    }
+    50% {
+      -webkit-transform: scale3d(1.05, 1.05, 1.05);
+      transform: scale3d(1.05, 1.05, 1.05);
+      opacity: .8;
+    }
+    to {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+      opacity: 1;
+    }
+  }
+  </style>
+</head>
+
+<body>
+  <div class="circle bubble"></div>
+</body>
+
+</html>
