@@ -1,0 +1,649 @@
+<!doctype html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>进口周首页动画</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <script src="//g.alicdn.com/mtb/lib-flexible/0.3.2/flexible.js" data-mt-inline=""></script>
+  <meta name="format-detection" content="telephone=no, email=no">
+  <style>
+    html,
+    body {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+    /* 小人一共走 56 个时刻，每个时刻 80ms */
+
+    @-webkit-keyframes moto_ios {
+      0% {
+        -webkit-transform: translate3d(0, 0, 0);
+      }
+      18.52% {
+        -webkit-transform: translate3d(250%, 0, 0);
+      }
+      20.37% {
+        -webkit-transform: translate3d(250%, 180%, 0);
+      }
+      72.22% {
+        -webkit-transform: translate3d(-450%, 180%, 0);
+      }
+      74.07% {
+        -webkit-transform: translate3d(-450%, 0, 0);
+      }
+      100% {
+        -webkit-transform: translate3d(0, 0, 0);
+      }
+    }
+
+    @-webkit-keyframes moto_android {
+      0% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+      18.52% {
+        -webkit-transform: translate3d(250%, 0, 0);
+        transform: translate3d(250%, 0, 0);
+      }
+      20.37% {
+        -webkit-transform: translate3d(250%, 110%, 0);
+        transform: translate3d(250%, 110%, 0);
+      }
+      72.22% {
+        -webkit-transform: translate3d(-450%, 110%, 0);
+        transform: translate3d(-450%, 110%, 0);
+      }
+      74.07% {
+        -webkit-transform: translate3d(-450%, 0, 0);
+        transform: translate3d(-450%, 0, 0);
+      }
+      100% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    @keyframes moto_android {
+      0% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+      18.52% {
+        -webkit-transform: translate3d(250%, 0, 0);
+        transform: translate3d(250%, 0, 0);
+      }
+      20.37% {
+        -webkit-transform: translate3d(250%, 110%, 0);
+        transform: translate3d(250%, 110%, 0);
+      }
+      72.22% {
+        -webkit-transform: translate3d(-450%, 110%, 0);
+        transform: translate3d(-450%, 110%, 0);
+      }
+      74.07% {
+        -webkit-transform: translate3d(-450%, 0, 0);
+        transform: translate3d(-450%, 0, 0);
+      }
+      100% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    /* 用 js 控制，否则在某些 android 下不生效 */
+    /*.IOS .item{
+        -webkit-animation: moto_ios 4640ms linear;
+      }
+      .ANDROID .item{
+        -webkit-animation: moto_android 4640ms linear;
+        animation: moto_android 4640ms linear;
+      }*/
+  </style>
+  <meta content="a1z3i" name="data-spm">
+  <meta content="20140614.a1z3i.my0wt4e90" name="data-scm">
+  <link type="image/x-icon" href="http://gw.alicdn.com/mt/TB1AElnKVXXXXc8XXXXXXXXXXXX-40-40.jpg" rel="Shortcut Icon">
+</head>
+
+<body data-spm="my0wt4e90">
+  <script src="//g.alicdn.com/mtb/??lib-windvane/2.0.3/windvane.js,lib-mtop/1.6.4/mtop.js,lib-login/1.4.1/login.js,lib-env/1.5.0/env.js,lib-aa/0.0.16/aa.js,lib-httpurl/1.3.2/httpurl.js,lib-img/0.2.6/img.js,lib-lazyload/2.1.2/lazyload.js,lib-motion/1.0.5/motion.js,lib-gesture/1.1.11/gesture.js,"
+      data-mt-inline=""></script>
+  <script>
+    var baseDuration = 80;
+    var block = lib.env.os.isIOS ? "TBHomeGridView" : "android.support.v7.widget.AppCompatTextView[text=天猫国际]<<<";
+    var start = lib.env.os.isIOS ? "UIImageView[accessibilityLabel=天猫国际]" : "android.support.v7.widget.AppCompatTextView[text=天猫国际]<"
+
+    // 带食物吃的动画
+    var fuzzImg = [
+      '//gw.alicdn.com/mt/TB1zCFxJVXXXXcFXpXXXXXXXXXX-183-129.gif',
+      '//gw.alicdn.com/mt/TB1UrpiJVXXXXbOXVXXXXXXXXXX-183-129.gif',
+      '//gw.alicdn.com/mt/TB1sD4AJVXXXXbDXpXXXXXXXXXX-183-129.gif',
+      '//gw.alicdn.com/mt/TB1a.0HJVXXXXaTXXXXXXXXXXXX-183-129.gif',
+      '//gw.alicdn.com/mt/TB13TFeJVXXXXcgXVXXXXXXXXXX-183-129.gif',
+      '//gw.alicdn.com/mt/TB1YARtJVXXXXakXFXXXXXXXXXX-183-129.gif',
+      '//gw.alicdn.com/mt/TB1JgBjJVXXXXX1XVXXXXXXXXXX-183-129.gif',
+      '//gw.alicdn.com/mt/TB1FjViJVXXXXbKXVXXXXXXXXXX-183-129.gif',
+      '//gw.alicdn.com/mt/TB1MstxJVXXXXc_XpXXXXXXXXXX-183-129.gif'
+    ].reverse()
+
+    // 不带食物吃的动画
+    var eatingImg = [
+      '//gw.alicdn.com/mt/TB1nvdIJVXXXXbCXXXXXXXXXXXX-183-129.gif',
+      '//gw.alicdn.com/mt/TB1wNpnJVXXXXXeXVXXXXXXXXXX-183-129.gif',
+      '//gw.alicdn.com/mt/TB12GXiJVXXXXcEXVXXXXXXXXXX-183-129.gif',
+      '//gw.alicdn.com/mt/TB1ssNrJVXXXXbmXFXXXXXXXXXX-183-129.gif',
+      '//gw.alicdn.com/mt/TB1OexCJVXXXXaBXpXXXXXXXXXX-183-129.gif',
+      '//gw.alicdn.com/mt/TB1mHdcJVXXXXahaXXXXXXXXXXX-183-129.gif',
+      '//gw.alicdn.com/mt/TB1mDhxJVXXXXauXpXXXXXXXXXX-183-129.gif',
+      '//gw.alicdn.com/mt/TB1EU8uJVXXXXamXFXXXXXXXXXX-183-129.gif',
+      '//gw.alicdn.com/mt/TB1t_FlJVXXXXajXVXXXXXXXXXX-183-129.gif'
+    ].reverse()
+
+    // 吃前的静态看天图
+    // 看天图因为在上线的时候已经默认有了，所以不需要再 track
+    // var staticImg = [
+    //   '//gw.alicdn.com/mt/TB1UMNJJVXXXXXoXXXXXXXXXXXX-183-129.png',
+    //   '//gw.alicdn.com/mt/TB1Q9w.JFXXXXa9XpXXXXXXXXXX-183-129.png',
+    //   '//gw.alicdn.com/mt/TB1jbtaJVXXXXa0XpXXXXXXXXXX-183-129.png',
+    //   '//gw.alicdn.com/mt/TB1NEUZJFXXXXc6XFXXXXXXXXXX-183-129.png',
+    //   '//gw.alicdn.com/mt/TB1QcQYJFXXXXc4XFXXXXXXXXXX-183-129.png',
+    //   '//gw.alicdn.com/mt/TB1XLcFJFXXXXauaXXXXXXXXXXX-183-129.png',
+    //   '//gw.alicdn.com/mt/TB1EkNeJVXXXXcpXXXXXXXXXXXX-183-129.png',
+    //   '//gw.alicdn.com/mt/TB1My76JFXXXXXUXFXXXXXXXXXX-183-129.png',
+    //   '//gw.alicdn.com/mt/TB1PnBlJVXXXXXHXXXXXXXXXXXX-183-129.png'
+    // ].reverse()
+
+    // 吃完后的满足图
+    var satisfiedImg = [
+      '//gw.alicdn.com/mt/TB1ss4IJVXXXXcdXXXXXXXXXXXX-183-129.png',
+      '//gw.alicdn.com/mt/TB1n1NsJVXXXXaHXFXXXXXXXXXX-183-129.png',
+      '//gw.alicdn.com/mt/TB1QyXaJVXXXXbVaXXXXXXXXXXX-183-129.png',
+      '//gw.alicdn.com/mt/TB1z2NMJVXXXXalXXXXXXXXXXXX-183-129.png',
+      '//gw.alicdn.com/mt/TB14vE.JFXXXXcxaXXXXXXXXXXX-183-129.png',
+      '//gw.alicdn.com/mt/TB1HKBoJVXXXXXzXVXXXXXXXXXX-183-129.png',
+      '//gw.alicdn.com/mt/TB1qUBgJVXXXXaSXVXXXXXXXXXX-183-129.png',
+      '//gw.alicdn.com/mt/TB1NdFLJVXXXXaFXXXXXXXXXXXX-183-129.png',
+      '//gw.alicdn.com/mt/TB1aZ8zJVXXXXcMXpXXXXXXXXXX-183-129.png'
+    ].reverse()
+
+    // 外卖图标不同状态图
+    var waimaiImg = [
+      // 没有小车的
+      '//gw.alicdn.com/mt/TB1xuanJVXXXXcqXXXXXXXXXXXX-183-129.png',
+      // 带刹车动画
+      '//gw.alicdn.com/mt/TB1rdikJVXXXXasXpXXXXXXXXXX-183-129.gif',
+      // 星星闪
+      '//gw.alicdn.com/mt/TB16J1oJVXXXXbMXXXXXXXXXXXX-183-129.gif',
+      // 带 HOT 标志
+      '//gw.alicdn.com/mt/TB1lPQ.JFXXXXaHaXXXXXXXXXXX-183-129.png'
+    ]
+
+    // 摩托图
+    var motoImg = '//gw.alicdn.com/mt/TB1ssVjJVXXXXa8XVXXXXXXXXXX-183-129.gif'
+
+    // 1x1 空白gif
+    var blankImg = '//gw.alicdn.com/mt/TB19X9vJVXXXXXoXXXXXXXXXXXX-1-1.gif'
+
+    var icons = function() {
+      return lib.env.os.isIOS ? [
+        "UIImageView[accessibilityLabel=聚划算]",
+        "UIImageView[accessibilityLabel=天猫]",
+        "UIImageView[accessibilityLabel=充值中心]",
+        "UIImageView[accessibilityLabel=阿里旅行]",
+        "UIImageView[accessibilityLabel=领金币]",
+        "UIImageView[accessibilityLabel=到家]",
+        "UIImageView[accessibilityLabel=分类]",
+        "UIImageView[accessibilityLabel=天猫超市]",
+        "UIImageView[accessibilityLabel=外卖]"
+      ] : [
+        "android.support.v7.widget.AppCompatTextView[text=聚划算]<",
+        "android.support.v7.widget.AppCompatTextView[text=天猫]<",
+        "android.support.v7.widget.AppCompatTextView[text=充值中心]<",
+        "android.support.v7.widget.AppCompatTextView[text=阿里旅行]<",
+        "android.support.v7.widget.AppCompatTextView[text=领金币]<",
+        "android.support.v7.widget.AppCompatTextView[text=到家]<",
+        "android.support.v7.widget.AppCompatTextView[text=分类]<",
+        "android.support.v7.widget.AppCompatTextView[text=天猫超市]<",
+        "android.support.v7.widget.AppCompatTextView[text=外卖]<"
+      ]
+    }();
+    icons.reverse()
+
+    PoplayerOperator = {
+      trackLayout: function(sel, callback) {
+        var me = this
+        var mainParams = [{
+          selector: sel,
+          continuousSelect: true,
+          groupId: 'icons',
+          operation: {
+            name: "poplayerTrack",
+            params: {}
+          }
+        }]
+        if (lib.env.os.isAndroid) {
+          mainParams.push({
+            selector: "com.taobao.tao.homepage.component.HomeSearchView[id=com.taobao.taobao:id/home_search_view]",
+            groupId: "top",
+            operation: {
+              name: "mirror"
+            }
+          })
+        }
+        WindVane.call("WVPopLayer", "selectAndOperate", {
+          mainParams: mainParams
+        }, function(e) {
+          callback()
+        }, function(e) {});
+      },
+      getItemSize: function(view, callback) {
+        var me = this;
+        var id = me.id++;
+        if (!me.infos) {
+          me.infos = {}
+        }
+        me.infos[view + "_" + id] = callback;
+        WindVane.call("WVPopLayer", "selectAndOperate", {
+          mainParams: [{
+            selector: view,
+            taskHandle: view + "_" + id,
+            continuousSelect: false,
+            operation: {
+              name: 'info'
+            }
+          }]
+        }, function() {}, function(e) {
+          alert(JSON.stringify(e))
+        })
+      },
+      __info: function(e) {
+        var me = this;
+        var taskId = e.param.taskHandle;
+        var fn = me.infos[taskId];
+        if (fn) {
+          if (e.param.succeed) {
+            fn(e.param.info)
+          } else {
+            fn({})
+          }
+          delete me.infos[taskId];
+        }
+      },
+      id: 100,
+      listen: function() {
+        var me = this;
+        document.addEventListener("PopLayer.SOTask.Track", function(e) {
+          //alert("Error" + JSON.stringify(e))
+        }, false)
+        document.addEventListener("PopLayer.SOTask.Info", function(e) {
+          //document.write(JSON.stringify(e))
+          me.__info(e);
+        }, false)
+      },
+      display: function() {
+        window.WindVane.call('WVPopLayer', 'display', {},
+          function(s) {},
+          function(e) {});
+      },
+      track: function(sel, imgUrl) {
+        if (lib.env.os.isIOS) {
+          var mainParams = [{
+            selector: sel,
+            operation: {
+              name: imgUrl.length ? 'track' : "untrack",
+              params: {
+                imgUrl: imgUrl,
+                modalThreshold: 0,
+                imgFillMode: "ScaleToFill"
+              }
+            }
+          }]
+          WindVane.call("WVPopLayer", "selectAndOperate", {
+            mainParams: mainParams
+          });
+        } else {
+          if (imgUrl.length) {
+            PoplayerOperator.trackDom(sel, imgUrl);
+          }
+        }
+      },
+      renderDom: function(sel, imgUrl, callback) {
+        var me = this;
+        me.getItemSize(sel, function(e) {
+          if (typeof e === 'string') {
+            e = JSON.parse(e)
+          }
+          // 如果超出视野范围就关闭动画
+          if (typeof e.height === 'undefined') {
+            window.WindVane.call('WVPopLayer', 'close', {})
+          }
+
+          var blockData = me.trackData.block
+          var selData = me.trackData[sel]
+          var cp = me.trackData.cp
+            // top 自己算
+          var top = function() {
+            var baseTop = 8.3 * (selData.width / 44) * cp
+            var index = icons.indexOf(sel)
+              // 如果是第一排 icon
+            if (index === 0 || index > 5) {
+              return baseTop
+            }
+            // 如果不在 icons 里，就是 start
+            else if (index === -1)
+              return baseTop
+                // 如果是第二排 icon
+            else {
+              //alert( baseTop + "\t" + selData.height * cp )
+              return 14.6 * (selData.width / 44) * cp + selData.height * cp
+            }
+          }()
+
+          var div = document.createElement('div')
+          div.style.cssText = [
+            'position: absolute',
+            'z-index:' + (me.id++),
+            'height:' + (selData.height * cp) + 'px',
+            'width:' + (selData.width * cp) + 'px',
+            'left:' + ((selData.x - blockData.x) * cp) + 'px',
+            // 'top:' + ((selData.y - blockData.y) * cp) + 'px'
+            'top:' + (top) + 'px'
+          ].join(';')
+          div.innerHTML = '<img src="' + imgUrl + '" width="100%">'
+          document.body.appendChild(div)
+          if (callback) {
+            callback(div)
+          }
+        })
+
+        // me.getItemSize( block ,function( tv ){
+        //   if( typeof tv === "string" ){
+        //       tv = JSON.parse( tv );
+        //   }
+        //   var realScreenWidth = tv.width ;
+        //   var baseRealTop = tv.y ;
+        //   var baseRealLeft = tv.x;
+        //   var renderScreenWidth = document.documentElement.clientWidth ;
+        //   var cp = renderScreenWidth / realScreenWidth;
+        //   // me.cp = cp
+        //   me.getItemSize( sel  ,function( e ){
+        //     if( typeof e === "string" ){
+        //       e = JSON.parse( e );
+        //     }
+        //     if( e.height === undefined ){
+        //       //超出视野区域了，不再渲染。
+        //       //先关掉动画，下次再显示。
+        //       window.WindVane.call('WVPopLayer', 'close', {}, function(e){
+        //        }, function(e) {
+        //                 // do something when failed;
+        //        });
+        //     }
+        //     var tmLeft  = e.x ;
+        //     //var cp = PoplayerOperator.cp;
+        //     var top=  3 * ( e.width / 44 )
+        //     var div = document.createElement("div");
+        //     div.style.cssText = "height:" + e.height * cp + "px;width:" + e.width * cp + "px;position:absolute;top:" + ( e.y - baseRealTop ) * cp + "px;left:" + ( e.x - baseRealLeft ) * cp + "px";
+        //     div.innerHTML = "<img src='"+ imgUrl  +"' width='100%'>";
+        //     div.style.zIndex = PoplayerOperator.id ++;
+        //     //div.setAttribute( "sel" , sel );
+        //     document.body.appendChild( div );
+        //     if(callback){
+        //       callback( div );
+        //     }
+        //   });
+        // });
+      },
+      trackDom: function(sel, imgUrl, callback) {
+        var ele = document.querySelector("[sel='" + sel + "'] > img ");
+        if (!ele) {
+          PoplayerOperator.renderDom(sel, imgUrl, function(div) {
+            div.setAttribute("sel", sel);
+            ele = div;
+            if (callback) {
+              callback(div);
+            }
+          });
+        } else {
+          ele.src = imgUrl;
+          if (callback) {
+            callback(ele);
+          }
+        }
+      },
+      showFuzz: function(sel, imgFuzz, imgEating) {
+        var me = this;
+        me.track(sel, "");
+        me.track(sel, imgFuzz);
+
+        setTimeout(function() {
+          me.track(sel, "");
+          me.track(sel, imgEating);
+        }, 1400);
+      },
+      satisfied: function() {
+        var me = this;
+        icons.forEach(function(sel, index) {
+          me.track(sel, "")
+          me.track(sel, satisfiedImg[index])
+        })
+      },
+      correctPos: function() {
+        var me = this
+        var sels = [start].concat(icons)
+        var cp = me.trackData.cp
+        setTimeout(function() {
+          me.getItemSize(block, function(tv) {
+            if (typeof tv === 'string') {
+              tv = JSON.parse(tv)
+            }
+            sels.forEach(function(sel, i) {
+              me.getItemSize(sel, function(e) {
+                if (typeof e === 'string') {
+                  e = JSON.parse(e)
+                }
+                var dom = document.querySelector('[sel="' + sel + '"]')
+                if (dom) {
+                  dom.style.top = (e.y - tv.y) * cp + 'px'
+                }
+                // 同时修正小车
+                if (i === 1) {
+                  me.moto.style.top = (e.y - tv.y) * cp + 'px'
+                }
+
+                // 最后一个 item 算完后，再重新倒计时订正
+                // if (i === sels.length - 1 && !me.finished) {
+                //   me.correctPos()
+                // }
+              })
+            })
+          })
+        }, 500)
+      },
+      initTrackData: function(callback) {
+        var me = this
+        var trackData = {}
+        me.getItemSize(block, function(tv) {
+          if (typeof tv === 'string') {
+            tv = JSON.parse(tv)
+          }
+          trackData.block = tv
+
+          var renderScreenWidth = document.documentElement.clientWidth;
+          trackData.cp = renderScreenWidth / tv.width
+
+          var count = 0
+          var sels = [].concat(icons).concat([start])
+          sels.forEach(function(sel) {
+            me.getItemSize(sel, function(e) {
+              if (typeof e === 'string') {
+                e = JSON.parse(e)
+              }
+              trackData[sel] = e
+              count++
+              if (count === icons.length) {
+                me.trackData = trackData
+                callback()
+              }
+            })
+          })
+        })
+      }
+    }
+
+    // 不在这里加 class，是因为小车要先显示出来后，再切成动画，如果现在加了 class，马上就会有动画了
+    // document.body.classList.add( lib.env.os.isIOS ? "IOS" : "ANDROID");
+    PoplayerOperator.trackLayout(block, function() {
+      PoplayerOperator.listen();
+      PoplayerOperator.display();
+
+      // var count = 9;
+      // var current = 0;
+      function showFuzz() {
+        // 从外卖的下一个 icon 开始计算
+        for (var i = 0, step, duration; i < 9; i++) {
+          // 第一排右侧
+          if (i === 0) {
+            step = 4
+          }
+          // 第二排
+          else if (i <= 5) {
+            step = 13
+          }
+          // 第一排左侧
+          else {
+            step = 22
+          }
+          duration = baseDuration * (i * 4 + step)
+
+          setTimeout(function(i) {
+            // 为了保存 i 需要通过函数保存
+            return function() {
+              PoplayerOperator.showFuzz(icons[i], fuzzImg[i], eatingImg[i])
+            }
+          }(i), duration)
+        }
+      }
+
+      function startGame() {
+        // 进入后先将所有的图片 track 一遍，从而可以算好位置，否则位置会出错
+        icons.forEach(function(icon, index) {
+          PoplayerOperator.track(icon, blankImg)
+        });
+        PoplayerOperator.track(start, blankImg)
+
+        PoplayerOperator.renderDom(start, motoImg, function(div) {
+          PoplayerOperator.moto = div
+          div.style.zIndex = '9999'
+          div.style.display = 'block'
+          div.style.overflow = 'hidden'
+
+          // div.className = "item";
+          var delay = 500;
+          setTimeout(function() {
+            // 添加 class 开始动画
+            // document.body.classList.add( lib.env.os.isIOS ? "IOS" : "ANDROID");
+            // 一定要用 js 加，否则某些 android 下无效
+            var animationName = lib.env.os.isIOS ? 'moto_ios' : 'moto_android'
+            div.style.webkitAnimation = animationName + ' 4640ms linear'
+
+            // 将外卖图片换成没有小车的
+            PoplayerOperator.track(start, waimaiImg[0])
+
+            // 依次显示吃的动画
+            showFuzz();
+
+            // android 下需要每订正位置
+            // if (!lib.env.os.isIOS) {
+            //   PoplayerOperator.correctPos()
+            // }
+          }, delay);
+
+          // 换小车方向，默认向右
+          setTimeout(function() {
+            // 换成向左
+            div.querySelector("img").style.webkitTransform = 'scaleX(-1)'
+          }, delay + 11 * baseDuration);
+          setTimeout(function() {
+            // 换回向右
+            div.querySelector("img").style.webkitTransform = ''
+          }, delay + 41 * baseDuration);
+
+          // 将外卖图标换成刹车动画
+          setTimeout(function() {
+            // 不需要先清空，否则会导致露出底图
+            // PoplayerOperator.track(start, "");
+            PoplayerOperator.track(start, waimaiImg[1])
+          }, delay + 54 * baseDuration);
+          // 移除骑车人
+          setTimeout(function() {
+            document.body.removeChild(div)
+          }, delay + 58 * baseDuration);
+          // 外卖图标换成星星闪的动画
+          setTimeout(function() {
+              PoplayerOperator.track(start, "");
+              PoplayerOperator.track(start, waimaiImg[2]);
+            }, delay + 54 * baseDuration + 1000)
+            // 外卖图标换成带 HOT 的版本，同时将所有动画关闭
+          setTimeout(function() {
+            PoplayerOperator.track(start, "");
+            PoplayerOperator.track(start, waimaiImg[3]);
+            PoplayerOperator.satisfied()
+            PoplayerOperator.finished = true
+            window.WindVane.call('WVPopLayer', 'increaseReadTimes', {})
+          }, delay + 54 * baseDuration + 1000 + 1000);
+        });
+      }
+
+      // 先把图片都预加载，再开始游戏
+      var preloadMap = {}
+      var preloadCount = 0
+      var imageUrls = [].concat(fuzzImg).concat(eatingImg).concat(satisfiedImg)
+        .concat(waimaiImg).concat([motoImg, blankImg])
+        //.concat(staticImg)
+
+      function finishChecker() {
+        if (preloadCount === imageUrls.length) {
+          PoplayerOperator.initTrackData(startGame)
+            //startGame()
+        }
+      }
+
+      function preloadImg(url) {
+        var img = new Image
+
+        img.onload = function() {
+          preloadCount++
+          img = null
+          finishChecker()
+        }
+        img.onerror = function() {
+          preloadMap[url]++
+            img = null
+
+          // 图片失败 3 次，则跳过
+          if (preloadMap[url] <= 3) {
+            preloadImg(url)
+          } else {
+            preloadCount++
+            finishChecker()
+          }
+        }
+        img.src = url
+      }
+
+      imageUrls.map(function(url) {
+        preloadMap[url] = 0
+        return url
+      }).forEach(function(url) {
+        preloadImg(url)
+      })
+    });
+  </script>
+  <script src="//g.alicdn.com/alilog/??wlog/0.2.8/aplus_wap.js,wlog/0.2.8/spm_wap.js,wlog/0.2.8/spmact_wap.js"></script>
+</body>
+
+</html>
