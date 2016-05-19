@@ -7,8 +7,10 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-touch-fullscreen" content="yes">
-  <script src="//g.alicdn.com/mtb/lib-flexible/0.3.2/flexible.js" data-mt-inline=""></script>
   <meta name="format-detection" content="telephone=no, email=no">
+  <link href="//g.alicdn.com/mui/global/1.2.35/file/favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <script src="//g.alicdn.com/mtb/lib-flexible/0.3.2/flexible.js"></script>
+  <script src="//g.alicdn.com/mtb/??lib-windvane/2.0.3/windvane.js,lib-mtop/1.6.4/mtop.js,lib-login/1.4.1/login.js,lib-env/1.5.0/env.js,lib-aa/0.0.16/aa.js,lib-httpurl/1.3.2/httpurl.js,lib-img/0.2.6/img.js,lib-lazyload/2.1.2/lazyload.js,lib-motion/1.0.5/motion.js,lib-gesture/1.1.11/gesture.js,"></script>
   <style>
   html,
   body {
@@ -17,90 +19,139 @@
     width: 100%;
     margin: 0;
     overflow: hidden;
+    /*background: rgba(0, 0, 0, .2);*/
   }
 
-  @-webkit-keyframes moto_ios {
-    0% {
-      -webkit-transform: translate3d(0, 0, 0);
-    }
-    18.52% {
-      -webkit-transform: translate3d(250%, 0, 0);
-    }
-    20.37% {
-      -webkit-transform: translate3d(250%, 180%, 0);
-    }
-    72.22% {
-      -webkit-transform: translate3d(-450%, 180%, 0);
-    }
-    74.07% {
-      -webkit-transform: translate3d(-450%, 0, 0);
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+  /* 使用REM方案来定位icon的位置，有问题询问@似零 */
+
+  .mui-icon-container {
+    /*background: rgba(255,0,0,.3);*/
+    width: 10rem;
+  }
+
+  .mui-icon-container img {
+    display: block;
+    width: 1.8rem;
+    margin: 0px auto;
+  }
+
+  .mui-flex {
+    display: -webkit-box!important;
+    display: -webkit-flex!important;
+    display: -ms-flexbox!important;
+    display: flex!important;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    height: 2rem;
+  }
+
+  .mui-flex>.cell {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-flex-basis: 0;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    max-width: 100%;
+    display: block;
+    padding: 0!important;
+    position: relative;
+    box-sizing: border-box;
+    z-index: 9999;
+    width: 2rem;
+    margin-top: 0.14rem;
+  }
+  /* 设定目标点的宽高 */
+
+  #target {
+    width: 1.9rem;
+    height: 2rem;
+  }
+  /* 国旗缩放动画 */
+
+  @-webkit-keyframes flag {
+    25% {
+      width: 1.8rem;
     }
     100% {
-      -webkit-transform: translate3d(0, 0, 0);
+      width: .3rem;
     }
   }
 
-  @-webkit-keyframes moto_android {
-    0% {
-      -webkit-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
-    }
-    18.52% {
-      -webkit-transform: translate3d(250%, 0, 0);
-      transform: translate3d(250%, 0, 0);
-    }
-    20.37% {
-      -webkit-transform: translate3d(250%, 110%, 0);
-      transform: translate3d(250%, 110%, 0);
-    }
-    72.22% {
-      -webkit-transform: translate3d(-450%, 110%, 0);
-      transform: translate3d(-450%, 110%, 0);
-    }
-    74.07% {
-      -webkit-transform: translate3d(-450%, 0, 0);
-      transform: translate3d(-450%, 0, 0);
+  @keyframes flag {
+    25% {
+      width: 1.8rem;
     }
     100% {
-      -webkit-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
+      width: .3rem;
     }
   }
+  /* iOS和Android视图高度不同，iOS要比Android高出约0.5rem */
 
-  @keyframes moto_android {
-    0% {
-      -webkit-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
-    }
-    18.52% {
-      -webkit-transform: translate3d(250%, 0, 0);
-      transform: translate3d(250%, 0, 0);
-    }
-    20.37% {
-      -webkit-transform: translate3d(250%, 110%, 0);
-      transform: translate3d(250%, 110%, 0);
-    }
-    72.22% {
-      -webkit-transform: translate3d(-450%, 110%, 0);
-      transform: translate3d(-450%, 110%, 0);
-    }
-    74.07% {
-      -webkit-transform: translate3d(-450%, 0, 0);
-      transform: translate3d(-450%, 0, 0);
-    }
-    100% {
-      -webkit-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
-    }
+  .IOS .mui-flex {
+    height: 2.25rem;
+  }
+
+  .ANDROID .mui-flex {
+    height: 1.9rem;
+  }
+
+  .ANDROID .mui-icon-container {
+    padding-top: 4px;
   }
   </style>
-  <meta content="a1z3i" name="data-spm">
-  <meta content="20140614.a1z3i.my0wt4e90" name="data-scm">
-  <link type="image/x-icon" href="http://gw.alicdn.com/mt/TB1AElnKVXXXXc8XXXXXXXXXXXX-40-40.jpg" rel="Shortcut Icon">
 </head>
 
-<body data-spm="my0wt4e90">
-  <script src="//g.alicdn.com/mtb/??lib-windvane/2.0.3/windvane.js,lib-mtop/1.6.4/mtop.js,lib-login/1.4.1/login.js,lib-env/1.5.0/env.js,lib-aa/0.0.16/aa.js,lib-httpurl/1.3.2/httpurl.js,lib-img/0.2.6/img.js,lib-lazyload/2.1.2/lazyload.js,lib-motion/1.0.5/motion.js,lib-gesture/1.1.11/gesture.js," data-mt-inline=""></script>
+<body>
+  <script type="text/javascript">
+  // 操作系统判断，如果是iOS则给body加上'IOS'，如果是Android则给加上'ANDROID'
+  document.body.classList.add(lib.env.os.isIOS ? 'IOS' : 'ANDROID')
+  </script>
+  <!-- 首页icon容器 -->
+  <div class="mui-icon-container">
+    <ul class="mui-flex">
+      <li class="cell">
+        <img class="element" src="//img.alicdn.com/tps/TB1WL_dJVXXXXcTXXXXXXXXXXXX-183-129.png">
+      </li>
+      <li class="cell">
+        <img class="element" src="//img.alicdn.com/tps/TB1keyNJVXXXXXCaXXXXXXXXXXX-183-129.png">
+      </li>
+      <li class="cell">
+        <div id="target"></div>
+      </li>
+      <li class="cell">
+        <img class="element" src="//img.alicdn.com/tps/TB1YM6fJVXXXXa8XXXXXXXXXXXX-183-129.png">
+      </li>
+      <li class="cell">
+        <img class="element" src="//img.alicdn.com/tps/TB1vMbXJVXXXXa3XpXXXXXXXXXX-183-129.png">
+      </li>
+    </ul>
+    <ul class="mui-flex">
+      <li class="cell">
+        <img class="element" src="//img.alicdn.com/tps/TB1UMy2JVXXXXbvXFXXXXXXXXXX-183-129.png">
+      </li>
+      <li class="cell">
+        <img class="element" src="//img.alicdn.com/tps/TB1cJa1JVXXXXczXFXXXXXXXXXX-183-129.png">
+      </li>
+      <li class="cell">
+        <img class="element" src="//img.alicdn.com/tps/TB1aqa1JVXXXXbPXFXXXXXXXXXX-183-129.png">
+      </li>
+      <li class="cell">
+        <img class="element" src="//img.alicdn.com/tps/TB1oK9NJVXXXXX3aXXXXXXXXXXX-183-129.png">
+      </li>
+      <li class="cell">
+        <img class="element" src="//img.alicdn.com/tps/TB1WKuWJVXXXXX5XVXXXXXXXXXX-183-129.png">
+      </li>
+    </ul>
+  </div>
+  <!-- 首页icon容器 End -->
   <script type="text/javascript">
   /*
    * Tween.js
@@ -112,490 +163,437 @@
    */
   var Tween = {
     Linear: function(t, b, c, d) {
-      return c * t / d + b;
+      return c * t / d + b
     },
     Quad: {
       easeIn: function(t, b, c, d) {
-        return c * (t /= d) * t + b;
+        return c * (t /= d) * t + b
       },
       easeOut: function(t, b, c, d) {
-        return -c * (t /= d) * (t - 2) + b;
+        return -c * (t /= d) * (t - 2) + b
       },
       easeInOut: function(t, b, c, d) {
-        if ((t /= d / 2) < 1) return c / 2 * t * t + b;
-        return -c / 2 * ((--t) * (t - 2) - 1) + b;
+        if ((t /= d / 2) < 1) return c / 2 * t * t + b
+        return -c / 2 * ((--t) * (t - 2) - 1) + b
       }
     },
     Cubic: {
       easeIn: function(t, b, c, d) {
-        return c * (t /= d) * t * t + b;
+        return c * (t /= d) * t * t + b
       },
       easeOut: function(t, b, c, d) {
-        return c * ((t = t / d - 1) * t * t + 1) + b;
+        return c * ((t = t / d - 1) * t * t + 1) + b
       },
       easeInOut: function(t, b, c, d) {
-        if ((t /= d / 2) < 1) return c / 2 * t * t * t + b;
-        return c / 2 * ((t -= 2) * t * t + 2) + b;
+        if ((t /= d / 2) < 1) return c / 2 * t * t * t + b
+        return c / 2 * ((t -= 2) * t * t + 2) + b
       }
     },
     Quart: {
       easeIn: function(t, b, c, d) {
-        return c * (t /= d) * t * t * t + b;
+        return c * (t /= d) * t * t * t + b
       },
       easeOut: function(t, b, c, d) {
-        return -c * ((t = t / d - 1) * t * t * t - 1) + b;
+        return -c * ((t = t / d - 1) * t * t * t - 1) + b
       },
       easeInOut: function(t, b, c, d) {
-        if ((t /= d / 2) < 1) return c / 2 * t * t * t * t + b;
-        return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
+        if ((t /= d / 2) < 1) return c / 2 * t * t * t * t + b
+        return -c / 2 * ((t -= 2) * t * t * t - 2) + b
       }
     },
     Quint: {
       easeIn: function(t, b, c, d) {
-        return c * (t /= d) * t * t * t * t + b;
+        return c * (t /= d) * t * t * t * t + b
       },
       easeOut: function(t, b, c, d) {
-        return c * ((t = t / d - 1) * t * t * t * t + 1) + b;
+        return c * ((t = t / d - 1) * t * t * t * t + 1) + b
       },
       easeInOut: function(t, b, c, d) {
-        if ((t /= d / 2) < 1) return c / 2 * t * t * t * t * t + b;
-        return c / 2 * ((t -= 2) * t * t * t * t + 2) + b;
+        if ((t /= d / 2) < 1) return c / 2 * t * t * t * t * t + b
+        return c / 2 * ((t -= 2) * t * t * t * t + 2) + b
       }
     },
     Sine: {
       easeIn: function(t, b, c, d) {
-        return -c * Math.cos(t / d * (Math.PI / 2)) + c + b;
+        return -c * Math.cos(t / d * (Math.PI / 2)) + c + b
       },
       easeOut: function(t, b, c, d) {
-        return c * Math.sin(t / d * (Math.PI / 2)) + b;
+        return c * Math.sin(t / d * (Math.PI / 2)) + b
       },
       easeInOut: function(t, b, c, d) {
-        return -c / 2 * (Math.cos(Math.PI * t / d) - 1) + b;
+        return -c / 2 * (Math.cos(Math.PI * t / d) - 1) + b
       }
     },
     Expo: {
       easeIn: function(t, b, c, d) {
-        return (t == 0) ? b : c * Math.pow(2, 10 * (t / d - 1)) + b;
+        return (t == 0) ? b : c * Math.pow(2, 10 * (t / d - 1)) + b
       },
       easeOut: function(t, b, c, d) {
-        return (t == d) ? b + c : c * (-Math.pow(2, -10 * t / d) + 1) + b;
+        return (t == d) ? b + c : c * (-Math.pow(2, -10 * t / d) + 1) + b
       },
       easeInOut: function(t, b, c, d) {
-        if (t == 0) return b;
-        if (t == d) return b + c;
-        if ((t /= d / 2) < 1) return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
-        return c / 2 * (-Math.pow(2, -10 * --t) + 2) + b;
+        if (t == 0) return b
+        if (t == d) return b + c
+        if ((t /= d / 2) < 1) return c / 2 * Math.pow(2, 10 * (t - 1)) + b
+        return c / 2 * (-Math.pow(2, -10 * --t) + 2) + b
       }
     },
     Circ: {
       easeIn: function(t, b, c, d) {
-        return -c * (Math.sqrt(1 - (t /= d) * t) - 1) + b;
+        return -c * (Math.sqrt(1 - (t /= d) * t) - 1) + b
       },
       easeOut: function(t, b, c, d) {
-        return c * Math.sqrt(1 - (t = t / d - 1) * t) + b;
+        return c * Math.sqrt(1 - (t = t / d - 1) * t) + b
       },
       easeInOut: function(t, b, c, d) {
-        if ((t /= d / 2) < 1) return -c / 2 * (Math.sqrt(1 - t * t) - 1) + b;
-        return c / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1) + b;
+        if ((t /= d / 2) < 1) return -c / 2 * (Math.sqrt(1 - t * t) - 1) + b
+        return c / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1) + b
       }
     },
     Elastic: {
       easeIn: function(t, b, c, d, a, p) {
-        var s;
-        if (t == 0) return b;
-        if ((t /= d) == 1) return b + c;
-        if (typeof p == "undefined") p = d * .3;
+        var s
+        if (t == 0) return b
+        if ((t /= d) == 1) return b + c
+        if (typeof p == "undefined") p = d * .3
         if (!a || a < Math.abs(c)) {
-          s = p / 4;
-          a = c;
+          s = p / 4
+          a = c
         } else {
-          s = p / (2 * Math.PI) * Math.asin(c / a);
+          s = p / (2 * Math.PI) * Math.asin(c / a)
         }
-        return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;
+        return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p)) + b
       },
       easeOut: function(t, b, c, d, a, p) {
-        var s;
-        if (t == 0) return b;
-        if ((t /= d) == 1) return b + c;
-        if (typeof p == "undefined") p = d * .3;
+        var s
+        if (t == 0) return b
+        if ((t /= d) == 1) return b + c
+        if (typeof p == "undefined") p = d * .3
         if (!a || a < Math.abs(c)) {
-          a = c;
-          s = p / 4;
+          a = c
+          s = p / 4
         } else {
-          s = p / (2 * Math.PI) * Math.asin(c / a);
+          s = p / (2 * Math.PI) * Math.asin(c / a)
         }
-        return (a * Math.pow(2, -10 * t) * Math.sin((t * d - s) * (2 * Math.PI) / p) + c + b);
+        return (a * Math.pow(2, -10 * t) * Math.sin((t * d - s) * (2 * Math.PI) / p) + c + b)
       },
       easeInOut: function(t, b, c, d, a, p) {
-        var s;
-        if (t == 0) return b;
-        if ((t /= d / 2) == 2) return b + c;
-        if (typeof p == "undefined") p = d * (.3 * 1.5);
+        var s
+        if (t == 0) return b
+        if ((t /= d / 2) == 2) return b + c
+        if (typeof p == "undefined") p = d * (.3 * 1.5)
         if (!a || a < Math.abs(c)) {
-          a = c;
-          s = p / 4;
+          a = c
+          s = p / 4
         } else {
-          s = p / (2 * Math.PI) * Math.asin(c / a);
+          s = p / (2 * Math.PI) * Math.asin(c / a)
         }
-        if (t < 1) return -.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;
-        return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p) * .5 + c + b;
+        if (t < 1) return -.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p)) + b
+        return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p) * .5 + c + b
       }
     },
     Back: {
       easeIn: function(t, b, c, d, s) {
-        if (typeof s == "undefined") s = 1.70158;
-        return c * (t /= d) * t * ((s + 1) * t - s) + b;
+        if (typeof s == "undefined") s = 1.70158
+        return c * (t /= d) * t * ((s + 1) * t - s) + b
       },
       easeOut: function(t, b, c, d, s) {
-        if (typeof s == "undefined") s = 1.70158;
-        return c * ((t = t / d - 1) * t * ((s + 1) * t + s) + 1) + b;
+        if (typeof s == "undefined") s = 1.70158
+        return c * ((t = t / d - 1) * t * ((s + 1) * t + s) + 1) + b
       },
       easeInOut: function(t, b, c, d, s) {
-        if (typeof s == "undefined") s = 1.70158;
-        if ((t /= d / 2) < 1) return c / 2 * (t * t * (((s *= (1.525)) + 1) * t - s)) + b;
-        return c / 2 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2) + b;
+        if (typeof s == "undefined") s = 1.70158
+        if ((t /= d / 2) < 1) return c / 2 * (t * t * (((s *= (1.525)) + 1) * t - s)) + b
+        return c / 2 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2) + b
       }
     },
     Bounce: {
       easeIn: function(t, b, c, d) {
-        return c - Tween.Bounce.easeOut(d - t, 0, c, d) + b;
+        return c - Tween.Bounce.easeOut(d - t, 0, c, d) + b
       },
       easeOut: function(t, b, c, d) {
         if ((t /= d) < (1 / 2.75)) {
-          return c * (7.5625 * t * t) + b;
+          return c * (7.5625 * t * t) + b
         } else if (t < (2 / 2.75)) {
-          return c * (7.5625 * (t -= (1.5 / 2.75)) * t + .75) + b;
+          return c * (7.5625 * (t -= (1.5 / 2.75)) * t + .75) + b
         } else if (t < (2.5 / 2.75)) {
-          return c * (7.5625 * (t -= (2.25 / 2.75)) * t + .9375) + b;
+          return c * (7.5625 * (t -= (2.25 / 2.75)) * t + .9375) + b
         } else {
-          return c * (7.5625 * (t -= (2.625 / 2.75)) * t + .984375) + b;
+          return c * (7.5625 * (t -= (2.625 / 2.75)) * t + .984375) + b
         }
       },
       easeInOut: function(t, b, c, d) {
         if (t < d / 2) {
-          return Tween.Bounce.easeIn(t * 2, 0, c, d) * .5 + b;
+          return Tween.Bounce.easeIn(t * 2, 0, c, d) * .5 + b
         } else {
-          return Tween.Bounce.easeOut(t * 2 - d, 0, c, d) * .5 + c * .5 + b;
+          return Tween.Bounce.easeOut(t * 2 - d, 0, c, d) * .5 + c * .5 + b
         }
       }
     }
   }
-  Math.tween = Tween;
+  Math.tween = Tween
   </script>
   <script type="text/javascript">
   var funParabola = function(element, target, options) {
-    /*
-     * 网页模拟现实需要一个比例尺
-     * 如果按照1像素就是1米来算，显然不合适，因为页面动不动就几百像素
-     * 页面上，我们放两个物体，200~800像素之间，我们可以映射为现实世界的2米到8米，也就是100:1
-     * 不过，本方法没有对此有所体现，因此不必在意
-     */
+      /*
+       * 网页模拟现实需要一个比例尺
+       * 如果按照1像素就是1米来算，显然不合适，因为页面动不动就几百像素
+       * 页面上，我们放两个物体，200~800像素之间，我们可以映射为现实世界的2米到8米，也就是100:1
+       * 不过，本方法没有对此有所体现，因此不必在意
+       */
 
-    var defaults = {
-      speed: 32, // 每帧移动的像素大小，每帧（对于大部分显示屏）大约16~17毫秒
-      curvature: 0.002, // 实际指焦点到准线的距离，你可以抽象成曲率，这里模拟扔物体的抛物线，因此是开口向下的
-      progress: function() {},
-      complete: function() {}
-    };
-
-    var params = {};
-    options = options || {};
-
-    for (var key in defaults) {
-      params[key] = options[key] || defaults[key];
-    }
-
-    var exports = {
-      mark: function() {
-        return this;
-      },
-      position: function() {
-        return this;
-      },
-      move: function() {
-        return this;
-      },
-      init: function() {
-        return this;
-      }
-    };
-
-    /* 确定移动的方式
-     * IE6-IE8 是margin位移
-     * IE9+使用transform
-     */
-    var moveStyle = "margin",
-      testDiv = document.createElement("div");
-    if ("oninput" in testDiv) {
-      ["", "ms", "webkit"].forEach(function(prefix) {
-        var transform = prefix + (prefix ? "T" : "t") + "ransform";
-        if (transform in testDiv.style) {
-          moveStyle = transform;
-        }
-      });
-    }
-
-    // 根据两点坐标以及曲率确定运动曲线函数（也就是确定a, b的值）
-    /* 公式： y = a*x*x + b*x + c;
-     */
-    var a = params.curvature,
-      b = 0,
-      c = 0;
-
-    // 是否执行运动的标志量
-    var flagMove = true;
-    var startTime = Date.now();
-
-    if (element && target && element.nodeType == 1 && target.nodeType == 1) {
-      var rectElement = {},
-        rectTarget = {};
-
-      // 移动元素的中心点位置，目标元素的中心点位置
-      var centerElement = {},
-        centerTarget = {};
-
-      // 目标元素的坐标位置
-      var coordElement = {},
-        coordTarget = {};
-
-      // 标注当前元素的坐标
-      exports.mark = function() {
-        if (flagMove == false) return this;
-        if (typeof coordElement.x == "undefined") this.position();
-        element.setAttribute("data-center", [coordElement.x, coordElement.y].join());
-        target.setAttribute("data-center", [coordTarget.x, coordTarget.y].join());
-        return this;
+      var defaults = {
+        speed: 2400, // 每帧移动的像素大小，每帧（对于大部分显示屏）大约16~17毫秒
+        curvature: 0.002, // 实际指焦点到准线的距离，你可以抽象成曲率，这里模拟扔物体的抛物线，因此是开口向下的
+        progress: function() {},
+        complete: function() {}
       }
 
-      exports.position = function() {
-        if (flagMove == false) return this;
+      var params = {}
+      options = options || {}
 
-        var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft,
-          scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      for (var key in defaults) {
+        params[key] = options[key] || defaults[key]
+      }
 
-        // 初始位置
-        if (moveStyle == "margin") {
-          element.style.marginLeft = element.style.marginTop = "0px";
-        } else {
-          element.style[moveStyle] = "translate(0, 0)";
+      var exports = {
+        mark: function() {
+          return this
+        },
+        position: function() {
+          return this
+        },
+        move: function() {
+          return this
+        },
+        init: function() {
+          return this
         }
+      }
 
-        // 四边缘的坐标
-        rectElement = element.getBoundingClientRect();
-        rectTarget = target.getBoundingClientRect();
-
-        // 移动元素的中心点坐标
-        centerElement = {
-          x: rectElement.left + (rectElement.right - rectElement.left) / 2 + scrollLeft,
-          y: rectElement.top + (rectElement.bottom - rectElement.top) / 2 + scrollTop
-        };
-
-        // 目标元素的中心点位置
-        centerTarget = {
-          x: rectTarget.left + (rectTarget.right - rectTarget.left) / 2 + scrollLeft,
-          y: rectTarget.top + (rectTarget.bottom - rectTarget.top) / 2 + scrollTop
-        };
-
-        // 转换成相对坐标位置
-        coordElement = {
-          x: 0,
-          y: 0
-        };
-        coordTarget = {
-          x: -1 * (centerElement.x - centerTarget.x),
-          y: -1 * (centerElement.y - centerTarget.y)
-        };
-
-        /*
-         * 因为经过(0, 0), 因此c = 0
-         * 于是：
-         * y = a * x*x + b*x;
-         * y1 = a * x1*x1 + b*x1;
-         * y2 = a * x2*x2 + b*x2;
-         * 利用第二个坐标：
-         * b = (y2+ a*x2*x2) / x2
-         */
-        // 于是
-        b = (coordTarget.y - a * coordTarget.x * coordTarget.x) / coordTarget.x;
-
-        return this;
-      };
-
-      // 按照这个曲线运动
-      exports.move = function() {
-        // 如果曲线运动还没有结束，不再执行新的运动
-        if (flagMove == false) return this;
-        var startx = 0,
-          rate = coordTarget.x > 0 ? 1 : -1;
-        var now = new Date().getTime()
-        var step = function() {
-          // 切线 y'=2ax+b
-          var tangent = 2 * a * startx + b; // = y / x
-          // y*y + x*x = speed
-          // (tangent * x)^2 + x*x = speed
-          // x = Math.sqr(speed / (tangent * tangent + 1));
-          // startx = startx + rate * Math.sqrt(params.speed / (tangent * tangent + 1));
-          var time = new Date().getTime() - now
-          startx = Tween.Cubic.easeIn(time, startx, rate * Math.sqrt(params.speed / (tangent * tangent + 1)), 1667)
-            // debugger
-
-          // 防止过界
-          if ((rate == 1 && startx > coordTarget.x) || (rate == -1 && startx < coordTarget.x)) {
-            startx = coordTarget.x;
+      /* 确定移动的方式
+       * IE6-IE8 是margin位移
+       * IE9+使用transform
+       */
+      var moveStyle = "margin",
+        testDiv = document.createElement("div")
+      if ("oninput" in testDiv) {
+        ["", "ms", "webkit"].forEach(function(prefix) {
+          var transform = prefix + (prefix ? "T" : "t") + "ransform"
+          if (transform in testDiv.style) {
+            moveStyle = transform
           }
-          var x = startx,
-            y = a * x * x + b * x;
+        })
+      }
 
-          // 标记当前位置，这里有测试使用的嫌疑，实际使用可以将这一行注释
-          element.setAttribute("data-center", [Math.round(x), Math.round(y)].join());
+      // 根据两点坐标以及曲率确定运动曲线函数（也就是确定a, b的值）
+      /* 公式： y = a*x*x + b*x + c;
+       */
+      var a = params.curvature,
+        b = 0,
+        c = 0
 
-          // x, y目前是坐标，需要转换成定位的像素值
+      // 是否执行运动的标志量
+      var flagMove = true
+      var startTime = Date.now()
+
+      if (element && target && element.nodeType == 1 && target.nodeType == 1) {
+        var rectElement = {},
+          rectTarget = {}
+
+        // 移动元素的中心点位置，目标元素的中心点位置
+        var centerElement = {},
+          centerTarget = {}
+
+        // 目标元素的坐标位置
+        var coordElement = {},
+          coordTarget = {}
+
+        // 标注当前元素的坐标
+        exports.mark = function() {
+          if (flagMove == false) return this
+          if (typeof coordElement.x == "undefined") this.position()
+          element.setAttribute("data-center", [coordElement.x, coordElement.y].join())
+          target.setAttribute("data-center", [coordTarget.x, coordTarget.y].join())
+          return this
+        }
+
+        exports.position = function() {
+          if (flagMove == false) return this
+
+          var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft,
+            scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+
+          // 初始位置
           if (moveStyle == "margin") {
-            element.style.marginLeft = x + "px";
-            element.style.marginTop = y + "px";
+            element.style.marginLeft = element.style.marginTop = "0px"
           } else {
-            element.style[moveStyle] = "translate(" + [x + "px", y + "px"].join() + ")";
+            element.style[moveStyle] = "translate(0, 0)"
           }
 
-          if (startx !== coordTarget.x) {
-            params.progress(x, y);
-            window.requestAnimationFrame(step);
-          } else {
-            // 运动结束，回调执行
-            params.complete();
-            flagMove = true;
+          // 四边缘的坐标
+          rectElement = element.getBoundingClientRect()
+          rectTarget = target.getBoundingClientRect()
+
+          // 移动元素的中心点坐标
+          centerElement = {
+            x: rectElement.left + (rectElement.right - rectElement.left) / 2 + scrollLeft,
+            y: rectElement.top + (rectElement.bottom - rectElement.top) / 2 + scrollTop
           }
-        };
-        window.requestAnimationFrame(step);
-        flagMove = false;
 
-        return this;
-      };
+          // 目标元素的中心点位置
+          centerTarget = {
+            x: rectTarget.left + (rectTarget.right - rectTarget.left) / 2 + scrollLeft,
+            y: rectTarget.top + (rectTarget.bottom - rectTarget.top) / 2 + scrollTop
+          }
 
-      // 初始化方法
-      exports.init = function() {
-        this.position().mark().move();
-      };
+          // 转换成相对坐标位置
+          coordElement = {
+            x: 0,
+            y: 0
+          }
+          coordTarget = {
+            x: -1 * (centerElement.x - centerTarget.x),
+            y: -1 * (centerElement.y - centerTarget.y)
+          }
+
+          /*
+           * 因为经过(0, 0), 因此c = 0
+           * 于是：
+           * y = a * x*x + b*x;
+           * y1 = a * x1*x1 + b*x1;
+           * y2 = a * x2*x2 + b*x2;
+           * 利用第二个坐标：
+           * b = (y2+ a*x2*x2) / x2
+           */
+          // 于是
+          b = (coordTarget.y - a * coordTarget.x * coordTarget.x) / coordTarget.x
+
+          return this
+        }
+
+        // 按照这个曲线运动
+        exports.move = function(callback) {
+          // 如果曲线运动还没有结束，不再执行新的运动
+          if (flagMove == false) return this
+          var startx = 0,
+            rate = coordTarget.x > 0 ? 1 : -1
+          var now = new Date().getTime()
+          var step = function() {
+            // 切线 y'=2ax+b
+            var tangent = 2 * a * startx + b // = y / x
+              // y*y + x*x = speed
+              // (tangent * x)^2 + x*x = speed
+              // x = Math.sqr(speed / (tangent * tangent + 1));
+              // startx = startx + rate * Math.sqrt(params.speed / (tangent * tangent + 1));
+            var time = new Date().getTime() - now
+            startx = Tween.Cubic.easeIn(time, startx, rate * Math.sqrt(params.speed / (tangent * tangent + 1)), 1667)
+              // debugger
+
+            // 防止过界
+            if ((rate == 1 && startx > coordTarget.x) || (rate == -1 && startx < coordTarget.x)) {
+              startx = coordTarget.x
+            }
+            var x = startx,
+              y = a * x * x + b * x
+
+            // 标记当前位置，这里有测试使用的嫌疑，实际使用可以将这一行注释
+            element.setAttribute("data-center", [Math.round(x), Math.round(y)].join())
+
+            // x, y目前是坐标，需要转换成定位的像素值
+            if (moveStyle == "margin") {
+              element.style.marginLeft = x + "px"
+              element.style.marginTop = y + "px"
+            } else {
+              element.style[moveStyle] = "translate(" + [x + "px", y + "px"].join() + ")"
+            }
+
+            if (startx !== coordTarget.x) {
+              params.progress(x, y)
+              window.requestAnimationFrame(step)
+            } else {
+              // 运动结束，回调执行
+              params.complete()
+              flagMove = true
+              callback()
+            }
+          }
+          window.requestAnimationFrame(step)
+          flagMove = false
+
+          return this
+        }
+
+        // 初始化方法
+        exports.init = function(callback) {
+          this.position().mark().move(callback)
+        }
+      }
+
+      return exports
     }
+    /**
+     * RequestAnimationFrame Polyfill
+     * @author shilin.zsl <shilin.zsl@alibaba-inc.com>
+     * @date   2016-05-19
+     * @param  {[type]}   function( [description]
+     * @return {[type]}             [description]
+     */
+    ;(function() {
+      var lastTime = 0
+      var vendors = ['webkit', 'moz']
+      for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame']
+        window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || // name has changed in Webkit
+          window[vendors[x] + 'CancelRequestAnimationFrame']
+      }
 
-    return exports;
-  };
-
-  (function() {
-    var lastTime = 0;
-    var vendors = ['webkit', 'moz'];
-    for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-      window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
-      window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || // name has changed in Webkit
-        window[vendors[x] + 'CancelRequestAnimationFrame'];
-    }
-
-    if (!window.requestAnimationFrame) {
-      window.requestAnimationFrame = function(callback, element) {
-        var currTime = new Date().getTime();
-        var timeToCall = Math.max(0, 16.7 - (currTime - lastTime));
-        var id = window.setTimeout(function() {
-          callback(currTime + timeToCall);
-        }, timeToCall);
-        lastTime = currTime + timeToCall;
-        return id;
-      };
-    }
-    if (!window.cancelAnimationFrame) {
-      window.cancelAnimationFrame = function(id) {
-        clearTimeout(id);
-      };
-    }
-  }());
+      if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = function(callback, element) {
+          var currTime = new Date().getTime()
+          var timeToCall = Math.max(0, 16.7 - (currTime - lastTime))
+          var id = window.setTimeout(function() {
+            callback(currTime + timeToCall)
+          }, timeToCall)
+          lastTime = currTime + timeToCall
+          return id
+        }
+      }
+      if (!window.cancelAnimationFrame) {
+        window.cancelAnimationFrame = function(id) {
+          clearTimeout(id)
+        }
+      }
+    }())
   </script>
   <script>
-  var baseDuration = 80;
-  var block = lib.env.os.isIOS ? "TBHomeGridView" : "android.support.v7.widget.AppCompatTextView[text=天猫国际]<<<";
+  // 首页icon视图组件区域，Android里面要从天猫国际icon向上寻找三级才能找到视图区域组件
+  var block = lib.env.os.isIOS ? "TBHomeGridView" : "android.support.v7.widget.AppCompatTextView[text=天猫国际]<<<"
+    // 起点icon的ViewId，根据平台不同要用不同的描述定位方式，在iOS中使用ObjectC，在Android使用Java包名，Android中有点不同，需要从TextView向上寻找一级
   var start = lib.env.os.isIOS ? "UIImageView[accessibilityLabel=天猫国际]" : "android.support.v7.widget.AppCompatTextView[text=天猫国际]<"
 
-  // 带食物吃的动画
-  var fuzzImg = [
-    '//gw.alicdn.com/mt/TB1zCFxJVXXXXcFXpXXXXXXXXXX-183-129.gif',
-    '//gw.alicdn.com/mt/TB1UrpiJVXXXXbOXVXXXXXXXXXX-183-129.gif',
-    '//gw.alicdn.com/mt/TB1sD4AJVXXXXbDXpXXXXXXXXXX-183-129.gif',
-    '//gw.alicdn.com/mt/TB1a.0HJVXXXXaTXXXXXXXXXXXX-183-129.gif',
-    '//gw.alicdn.com/mt/TB13TFeJVXXXXcgXVXXXXXXXXXX-183-129.gif',
-    '//gw.alicdn.com/mt/TB1YARtJVXXXXakXFXXXXXXXXXX-183-129.gif',
-    '//gw.alicdn.com/mt/TB1JgBjJVXXXXX1XVXXXXXXXXXX-183-129.gif',
-    '//gw.alicdn.com/mt/TB1FjViJVXXXXbKXVXXXXXXXXXX-183-129.gif',
-    '//gw.alicdn.com/mt/TB1MstxJVXXXXc_XpXXXXXXXXXX-183-129.gif'
-  ].reverse()
-
-  var flagImg = [
-    '//g.alicdn.com/mui/flag-img/circle/JP.png',
-    '//g.alicdn.com/mui/flag-img/circle/UK.png',
-    '//g.alicdn.com/mui/flag-img/circle/US.png',
-    '//g.alicdn.com/mui/flag-img/circle/FR.png',
-    '//g.alicdn.com/mui/flag-img/circle/AU.png',
-    '//g.alicdn.com/mui/flag-img/circle/CN.png',
-    '//g.alicdn.com/mui/flag-img/circle/DE.png',
-    '//g.alicdn.com/mui/flag-img/circle/TH.png',
-    '//g.alicdn.com/mui/flag-img/circle/TW.png'
-  ].reverse()
-
-  // 不带食物吃的动画
-  var eatingImg = [
-    '//gw.alicdn.com/mt/TB1nvdIJVXXXXbCXXXXXXXXXXXX-183-129.gif',
-    '//gw.alicdn.com/mt/TB1wNpnJVXXXXXeXVXXXXXXXXXX-183-129.gif',
-    '//gw.alicdn.com/mt/TB12GXiJVXXXXcEXVXXXXXXXXXX-183-129.gif',
-    '//gw.alicdn.com/mt/TB1ssNrJVXXXXbmXFXXXXXXXXXX-183-129.gif',
-    '//gw.alicdn.com/mt/TB1OexCJVXXXXaBXpXXXXXXXXXX-183-129.gif',
-    '//gw.alicdn.com/mt/TB1mHdcJVXXXXahaXXXXXXXXXXX-183-129.gif',
-    '//gw.alicdn.com/mt/TB1mDhxJVXXXXauXpXXXXXXXXXX-183-129.gif',
-    '//gw.alicdn.com/mt/TB1EU8uJVXXXXamXFXXXXXXXXXX-183-129.gif',
-    '//gw.alicdn.com/mt/TB1t_FlJVXXXXajXVXXXXXXXXXX-183-129.gif'
-  ].reverse()
-
-  // 吃前的静态看天图
-  // 看天图因为在上线的时候已经默认有了，所以不需要再 track
-  // var staticImg = [
-  //   '//gw.alicdn.com/mt/TB1UMNJJVXXXXXoXXXXXXXXXXXX-183-129.png',
-  //   '//gw.alicdn.com/mt/TB1Q9w.JFXXXXa9XpXXXXXXXXXX-183-129.png',
-  //   '//gw.alicdn.com/mt/TB1jbtaJVXXXXa0XpXXXXXXXXXX-183-129.png',
-  //   '//gw.alicdn.com/mt/TB1NEUZJFXXXXc6XFXXXXXXXXXX-183-129.png',
-  //   '//gw.alicdn.com/mt/TB1QcQYJFXXXXc4XFXXXXXXXXXX-183-129.png',
-  //   '//gw.alicdn.com/mt/TB1XLcFJFXXXXauaXXXXXXXXXXX-183-129.png',
-  //   '//gw.alicdn.com/mt/TB1EkNeJVXXXXcpXXXXXXXXXXXX-183-129.png',
-  //   '//gw.alicdn.com/mt/TB1My76JFXXXXXUXFXXXXXXXXXX-183-129.png',
-  //   '//gw.alicdn.com/mt/TB1PnBlJVXXXXXHXXXXXXXXXXXX-183-129.png'
-  // ].reverse()
-
-  // 吃完后的满足图
-  var satisfiedImg = [
-    '//gw.alicdn.com/mt/TB1ss4IJVXXXXcdXXXXXXXXXXXX-183-129.png',
-    '//gw.alicdn.com/mt/TB1n1NsJVXXXXaHXFXXXXXXXXXX-183-129.png',
-    '//gw.alicdn.com/mt/TB1QyXaJVXXXXbVaXXXXXXXXXXX-183-129.png',
-    '//gw.alicdn.com/mt/TB1z2NMJVXXXXalXXXXXXXXXXXX-183-129.png',
-    '//gw.alicdn.com/mt/TB14vE.JFXXXXcxaXXXXXXXXXXX-183-129.png',
-    '//gw.alicdn.com/mt/TB1HKBoJVXXXXXzXVXXXXXXXXXX-183-129.png',
-    '//gw.alicdn.com/mt/TB1qUBgJVXXXXaSXVXXXXXXXXXX-183-129.png',
-    '//gw.alicdn.com/mt/TB1NdFLJVXXXXaFXXXXXXXXXXXX-183-129.png',
-    '//gw.alicdn.com/mt/TB1aZ8zJVXXXXcMXpXXXXXXXXXX-183-129.png'
-  ].reverse()
-
-  // 外卖图标不同状态图
-  var waimaiImg = [
-    // 没有小车的
-    '//gw.alicdn.com/mt/TB1xuanJVXXXXcqXXXXXXXXXXXX-183-129.png',
-    // 带刹车动画
-    '//gw.alicdn.com/mt/TB1rdikJVXXXXasXpXXXXXXXXXX-183-129.gif',
-    // 星星闪
-    '//gw.alicdn.com/mt/TB16J1oJVXXXXbMXXXXXXXXXXXX-183-129.gif',
-    // 带 HOT 标志
-    '//gw.alicdn.com/mt/TB1lPQ.JFXXXXaHaXXXXXXXXXXX-183-129.png'
-  ]
-
-  // 摩托图
-  var motoImg = '//gw.alicdn.com/mt/TB1ssVjJVXXXXa8XVXXXXXXXXXX-183-129.gif'
+  // 飞机出现图
+  var planeImg = '//img.alicdn.com/tps/TB15Vi.JVXXXXXPXVXXXXXXXXXX-183-174.gif'
+    // 飞机消失返回图
+  var planeBackImg = '//img.alicdn.com/tps/TB1PUG9JVXXXXXpXVXXXXXXXXXX-183-174.gif'
 
   // 1x1 空白gif
   var blankImg = '//gw.alicdn.com/mt/TB19X9vJVXXXXXoXXXXXXXXXXXX-1-1.gif'
 
+  // 国旗图
+  var flagImg = [
+    '//img.alicdn.com/tps/TB1keyNJVXXXXXCaXXXXXXXXXXX-183-129.png',
+    '//img.alicdn.com/tps/TB1WL_dJVXXXXcTXXXXXXXXXXXX-183-129.png',
+    '//img.alicdn.com/tps/TB1UMy2JVXXXXbvXFXXXXXXXXXX-183-129.png',
+    '//img.alicdn.com/tps/TB1cJa1JVXXXXczXFXXXXXXXXXX-183-129.png',
+    '//img.alicdn.com/tps/TB1aqa1JVXXXXbPXFXXXXXXXXXX-183-129.png',
+    '//img.alicdn.com/tps/TB1oK9NJVXXXXX3aXXXXXXXXXXX-183-129.png',
+    '//img.alicdn.com/tps/TB1WKuWJVXXXXX5XVXXXXXXXXXX-183-129.png',
+    '//img.alicdn.com/tps/TB1vMbXJVXXXXa3XpXXXXXXXXXX-183-129.png',
+    '//img.alicdn.com/tps/TB1YM6fJVXXXXa8XXXXXXXXXXXX-183-129.png'
+  ].reverse()
+
+  // icon组件的ViewId
   var icons = function() {
     return lib.env.os.isIOS ? [
       "UIImageView[accessibilityLabel=聚划算]",
@@ -618,10 +616,22 @@
       "android.support.v7.widget.AppCompatTextView[text=天猫超市]<",
       "android.support.v7.widget.AppCompatTextView[text=外卖]<"
     ]
-  }();
+  }()
   icons.reverse()
 
+  /**
+   * Poplayer操作类，封装了WindVane的API
+   * @type {Object}
+   */
   PoplayerOperator = {
+    /**
+     * 跟踪布局，视图Id从HomeSearchView寻找
+     * @author shilin.zsl <shilin.zsl@alibaba-inc.com>
+     * @date   2016-05-19
+     * @param  {String}   sel      目标元素ViewId
+     * @param  {Function} callback 跟踪完成回调
+     * @return {[type]}            [description]
+     */
     trackLayout: function(sel, callback) {
       var me = this
       var mainParams = [{
@@ -642,19 +652,28 @@
           }
         })
       }
+      // 使用selectAndOperate操作参数来定位布局
       WindVane.call("WVPopLayer", "selectAndOperate", {
         mainParams: mainParams
       }, function(e) {
         callback()
-      }, function(e) {});
+      }, function(e) {})
     },
+    /**
+     * 获取元素大小
+     * @author shilin.zsl <shilin.zsl@alibaba-inc.com>
+     * @date   2016-05-19
+     * @param  {String}   view     目标元素ViewId
+     * @param  {Function} callback 获取元素大小执行回调
+     * @return {[type]}            [description]
+     */
     getItemSize: function(view, callback) {
-      var me = this;
-      var id = me.id++;
-      if (!me.infos) {
-        me.infos = {}
-      }
-      me.infos[view + "_" + id] = callback;
+      var me = this
+      var id = me.id++
+        if (!me.infos) {
+          me.infos = {}
+        }
+      me.infos[view + "_" + id] = callback
       WindVane.call("WVPopLayer", "selectAndOperate", {
         mainParams: [{
           selector: view,
@@ -668,37 +687,64 @@
         alert(JSON.stringify(e))
       })
     },
+    /**
+     * 私有方法，从infos队列中根据taskId将元素坐标、大小取出
+     * @author shilin.zsl <shilin.zsl@alibaba-inc.com>
+     * @date   2016-05-19
+     * @param  {Object}   e 任务句柄
+     * @return {[type]}     [description]
+     */
     __info: function(e) {
-      var me = this;
-      var taskId = e.param.taskHandle;
-      var fn = me.infos[taskId];
+      var me = this
+      var taskId = e.param.taskHandle
+      var fn = me.infos[taskId]
       if (fn) {
         if (e.param.succeed) {
           fn(e.param.info)
         } else {
           fn({})
         }
-        delete me.infos[taskId];
+        delete me.infos[taskId]
       }
     },
     id: 100,
+    /**
+     * 监听PopLayer跟踪事件
+     * @author shilin.zsl <shilin.zsl@alibaba-inc.com>
+     * @date   2016-05-19
+     * @return {[type]}   [description]
+     */
     listen: function() {
-      var me = this;
+      var me = this
       document.addEventListener("PopLayer.SOTask.Track", function(e) {
         //alert("Error" + JSON.stringify(e))
       }, false)
       document.addEventListener("PopLayer.SOTask.Info", function(e) {
         //document.write(JSON.stringify(e))
-        me.__info(e);
+        me.__info(e)
       }, false)
     },
+    /**
+     * 显示PopLayer
+     * @author shilin.zsl <shilin.zsl@alibaba-inc.com>
+     * @date   2016-05-19
+     * @return {[type]}   [description]
+     */
     display: function() {
       window.WindVane.call('WVPopLayer', 'display', {},
         function(s) {},
-        function(e) {});
+        function(e) {})
     },
+    /**
+     * 跟踪并替换图片
+     * @author shilin.zsl <shilin.zsl@alibaba-inc.com>
+     * @date   2016-05-19
+     * @param  {String}   sel    目标元素ViewId
+     * @param  {String}   imgUrl 图片url
+     * @return {[type]}          [description]
+     */
     track: function(sel, imgUrl) {
-      if (lib.env.os.isIOS || lib.env.os.isAndroid) {
+      if (lib.env.os.isIOS) {
         var mainParams = [{
           selector: sel,
           operation: {
@@ -712,15 +758,24 @@
         }]
         WindVane.call("WVPopLayer", "selectAndOperate", {
           mainParams: mainParams
-        });
+        })
       } else {
         if (imgUrl.length) {
-          PoplayerOperator.trackDom(sel, imgUrl);
+          PoplayerOperator.trackDom(sel, imgUrl)
         }
       }
     },
+    /**
+     * 在元素上覆盖图片
+     * @author shilin.zsl <shilin.zsl@alibaba-inc.com>
+     * @date   2016-05-19
+     * @param  {String}   sel    目标元素ViewId
+     * @param  {String}   imgUrl 图片url
+     * @param  {Function} callback 渲染元素执行回调
+     * @return {[type]}            [description]
+     */
     renderDom: function(sel, imgUrl, callback) {
-      var me = this;
+      var me = this
       me.getItemSize(sel, function(e) {
         if (typeof e === 'string') {
           e = JSON.parse(e)
@@ -767,84 +822,115 @@
           callback(div)
         }
       })
-
-      // me.getItemSize( block ,function( tv ){
-      //   if( typeof tv === "string" ){
-      //       tv = JSON.parse( tv );
-      //   }
-      //   var realScreenWidth = tv.width ;
-      //   var baseRealTop = tv.y ;
-      //   var baseRealLeft = tv.x;
-      //   var renderScreenWidth = document.documentElement.clientWidth ;
-      //   var cp = renderScreenWidth / realScreenWidth;
-      //   // me.cp = cp
-      //   me.getItemSize( sel  ,function( e ){
-      //     if( typeof e === "string" ){
-      //       e = JSON.parse( e );
-      //     }
-      //     if( e.height === undefined ){
-      //       //超出视野区域了，不再渲染。
-      //       //先关掉动画，下次再显示。
-      //       window.WindVane.call('WVPopLayer', 'close', {}, function(e){
-      //        }, function(e) {
-      //                 // do something when failed;
-      //        });
-      //     }
-      //     var tmLeft  = e.x ;
-      //     //var cp = PoplayerOperator.cp;
-      //     var top=  3 * ( e.width / 44 )
-      //     var div = document.createElement("div");
-      //     div.style.cssText = "height:" + e.height * cp + "px;width:" + e.width * cp + "px;position:absolute;top:" + ( e.y - baseRealTop ) * cp + "px;left:" + ( e.x - baseRealLeft ) * cp + "px";
-      //     div.innerHTML = "<img src='"+ imgUrl  +"' width='100%'>";
-      //     div.style.zIndex = PoplayerOperator.id ++;
-      //     //div.setAttribute( "sel" , sel );
-      //     document.body.appendChild( div );
-      //     if(callback){
-      //       callback( div );
-      //     }
-      //   });
-      // });
     },
+    /**
+     * 渲染飞机图
+     * @author shilin.zsl <shilin.zsl@alibaba-inc.com>
+     * @date   2016-05-19
+     * @param  {String}   sel      飞机显示位置的ViewId
+     * @param  {String}   imgUrl   飞机图片url
+     * @param  {Function} callback 渲染完成回调
+     * @return {[type]}            [description]
+     */
+    renderPlane: function(sel, imgUrl, callback) {
+      var me = this
+      me.getItemSize(sel, function(e) {
+        if (typeof e === 'string') {
+          e = JSON.parse(e)
+        }
+        // 如果超出视野范围就关闭动画
+        if (typeof e.height === 'undefined') {
+          window.WindVane.call('WVPopLayer', 'close', {})
+        }
+
+        var blockData = me.trackData.block
+        var selData = me.trackData[sel]
+        var cp = me.trackData.cp
+          // top 自己算
+        var top = function() {
+          var baseTop = 8.3 * (selData.width / 44) * cp
+          var index = icons.indexOf(sel)
+            // 如果是第一排 icon
+          if (index === 0 || index > 5) {
+            return baseTop
+          }
+          // 如果不在 icons 里，就是 start
+          else if (index === -1)
+            return baseTop
+              // 如果是第二排 icon
+          else {
+            //alert( baseTop + "\t" + selData.height * cp )
+            return 14.6 * (selData.width / 44) * cp + selData.height * cp
+          }
+        }()
+
+        var offset = lib.env.os.isIOS ? 68 : 15
+
+        var div = document.createElement('div')
+        div.style.cssText = [
+          'position: absolute',
+          'z-index:' + (me.id++),
+          'height:' + (selData.height * cp) + 'px',
+          'width:' + (selData.width * cp) + 'px',
+          'left:' + ((selData.x - blockData.x) * cp) + 'px',
+          // 'top:' + ((selData.y - blockData.y) * cp) + 'px'
+          'top:' + (top - offset) + 'px'
+        ].join(';')
+        div.innerHTML = '<img src="' + imgUrl + '" width="100%">'
+        document.body.appendChild(div)
+        if (callback) {
+          callback(div)
+        }
+      })
+    },
+    /**
+     * 跟踪元素并在上分创建图片DOM节点
+     * @author shilin.zsl <shilin.zsl@alibaba-inc.com>
+     * @date   2016-05-19
+     * @param  {String}   sel      目标元素
+     * @param  {String}   imgUrl   图片url
+     * @param  {Function} callback 图片创建完成执行回调
+     * @return {[type]}            [description]
+     */
     trackDom: function(sel, imgUrl, callback) {
-      var ele = document.querySelector("[sel='" + sel + "'] > img ");
+      var ele = document.querySelector("[sel='" + sel + "'] > img ")
       if (!ele) {
         PoplayerOperator.renderDom(sel, imgUrl, function(div) {
-          div.setAttribute("sel", sel);
-          ele = div;
+          div.setAttribute("sel", sel)
+          ele = div
           if (callback) {
-            callback(div);
+            callback(div)
           }
-        });
+        })
       } else {
-        ele.src = imgUrl;
+        ele.src = imgUrl
         if (callback) {
-          callback(ele);
+          callback(ele)
         }
       }
     },
-    showFlag: function(sel, imgFlag) {
+    /**
+     * 显示国旗
+     * @author shilin.zsl <shilin.zsl@alibaba-inc.com>
+     * @date   2016-05-19
+     * @param  {String}   sel      国旗目标元素
+     * @param  {String}   imgFlag  国旗图片url
+     * @param  {Function} callback 渲染国旗成功回调
+     * @return {[type]}            [description]
+     */
+    showFlag: function(sel, imgFlag, callback) {
       var me = this
       me.trackDom(sel, '')
-      me.trackDom(sel, imgFlag)
-
-    },
-    showFuzz: function(sel, imgFuzz, imgEating) {
-      var me = this;
-      me.track(sel, "");
-      me.track(sel, imgFuzz);
-
-      setTimeout(function() {
-        me.track(sel, "");
-        me.track(sel, imgEating);
-      }, 1400);
-    },
-    satisfied: function() {
-      var me = this;
-      icons.forEach(function(sel, index) {
-        me.track(sel, "")
-        me.track(sel, satisfiedImg[index])
+      me.trackDom(sel, imgFlag, function(flag) {
+        callback(flag)
       })
     },
+    /**
+     * 修正元素坐标
+     * @author shilin.zsl <shilin.zsl@alibaba-inc.com>
+     * @date   2016-05-19
+     * @return {[type]}   [description]
+     */
     correctPos: function() {
       var me = this
       var sels = [start].concat(icons)
@@ -877,16 +963,24 @@
         })
       }, 500)
     },
+    /**
+     * 初始化icon跟踪路径数据
+     * @author shilin.zsl <shilin.zsl@alibaba-inc.com>
+     * @date   2016-05-19
+     * @param  {Function} callback [description]
+     * @return {[type]}            [description]
+     */
     initTrackData: function(callback) {
       var me = this
       var trackData = {}
       me.getItemSize(block, function(tv) {
+        // alert(JSON.stringify(tv))
         if (typeof tv === 'string') {
           tv = JSON.parse(tv)
         }
         trackData.block = tv
 
-        var renderScreenWidth = document.documentElement.clientWidth;
+        var renderScreenWidth = document.documentElement.clientWidth
         trackData.cp = renderScreenWidth / tv.width
 
         var count = 0
@@ -908,164 +1002,91 @@
     }
   }
 
-  // 不在这里加 class，是因为小车要先显示出来后，再切成动画，如果现在加了 class，马上就会有动画了
-  // document.body.classList.add( lib.env.os.isIOS ? "IOS" : "ANDROID");
+  /**
+   * Poplayer布局跟踪，跟踪整一个GridView区块
+   * @author shilin.zsl <shilin.zsl@alibaba-inc.com>
+   * @date   2016-05-19
+   * @param  {String}   block     目标视图区块
+   * @param  {Function}   function 跟踪成功执行回调
+   * @return {[type]}             [description]
+   */
   PoplayerOperator.trackLayout(block, function() {
-    PoplayerOperator.listen();
-    PoplayerOperator.display();
-
-    var count = 9;
-    var current = 0;
-
-    function showFuzz() {
-      // 从外卖的下一个 icon 开始计算
-      for (var i = 0, step, duration; i < 9; i++) {
-        // 第一排右侧
-        if (i === 0) {
-          step = 4
-        }
-        // 第二排
-        else if (i <= 5) {
-          step = 13
-        }
-        // 第一排左侧
-        else {
-          step = 22
-        }
-        duration = baseDuration * (i * 4 + step)
-
-        setTimeout(function(i) {
-          // 为了保存 i 需要通过函数保存
-          return function() {
-            PoplayerOperator.showFuzz(icons[i], fuzzImg[i], eatingImg[i])
-          }
-        }(i), duration)
-      }
-    }
-
+    PoplayerOperator.listen()
+    PoplayerOperator.display()
+      /**
+       * 显示国旗元素
+       * @author shilin.zsl <shilin.zsl@alibaba-inc.com>
+       * @date   2016-05-19
+       * @return {[type]}   [description]
+       */
     function showFlag() {
       for (var i = 0; i < 9; i++) {
-        PoplayerOperator.showFlag(icons[i], flagImg[i]);
+        PoplayerOperator.showFlag(icons[i], flagImg[i], function(flag) {})
       }
     }
 
-    function startGame() {
-      // 进入后先将所有的图片 track 一遍，从而可以算好位置，否则位置会出错
-      icons.forEach(function(icon, index) {
-        PoplayerOperator.track(icon, blankImg)
-      });
-      PoplayerOperator.track(start, blankImg)
-
-      PoplayerOperator.renderDom(start, motoImg, function(div) {
-        PoplayerOperator.moto = div
-        div.style.zIndex = '9999'
-        div.style.display = 'block'
-        div.style.overflow = 'hidden'
-
-        // div.className = "item";
-        var delay = 500;
+    /**
+     * 开始动画场景
+     * @author shilin.zsl <shilin.zsl@alibaba-inc.com>
+     * @date   2016-05-19
+     * @return {[type]}   [description]
+     */
+    function startScene() {
+      // 动画延迟基准
+      var delay = 500
+        // 渲染飞机动图
+      PoplayerOperator.renderPlane(start, planeImg, function(plane) {
         setTimeout(function() {
-          // 添加 class 开始动画
-          // document.body.classList.add( lib.env.os.isIOS ? "IOS" : "ANDROID");
-          // 一定要用 js 加，否则某些 android 下无效
-          var animationName = lib.env.os.isIOS ? 'moto_ios' : 'moto_android'
-          div.style.webkitAnimation = animationName + ' 4640ms linear'
-
-          // 将外卖图片换成没有小车的
-          PoplayerOperator.track(start, waimaiImg[0])
-
-          // 依次显示吃的动画
-          // showFuzz();
-          showFlag()
-
-          // android 下需要每订正位置
-          // if (!lib.env.os.isIOS) {
-          //   PoplayerOperator.correctPos()
-          // }
-        }, delay);
-        PoplayerOperator.renderDom(start, motoImg, function(div) {
-          div.setAttribute('id', 'target')
-        })
-
+            var self = this
+            var elements = document.getElementsByClassName("element"),
+              target = document.getElementById("target")
+            var parabola = []
+            for (var i = 0, len = elements.length; i < len; i++) {
+              // 抛物线元素的的位置标记
+              var ani = funParabola(elements[i], target).mark()
+              parabola.push(ani)
+              // alert('test')
+            }
+            // 抛物线运动
+            for (var i = 0, len = parabola.length; i < len; i++) {
+              var ele = elements[i]
+              parabola[i].init(function() {
+                  // 隐藏国旗元素
+                  this.style.display = 'none'
+                }.bind(ele))
+                // 绑定CSS3缩放动画
+              ele.style.webkitAnimation = 'flag' + ' 1.7s linear'
+            }
+          }, delay)
+          // 替换飞机图
         setTimeout(function() {
-
-          var elements = document.getElementsByTagName("div"),
-            target = document.getElementById("target");
-          // 抛物线元素的的位置标记
-          var parabola = [];
-          for (var i = 0, len = elements.length; i < len; i++) {
-
-            var ani = funParabola(elements[i], target).mark()
-            parabola.push(ani)
-          }
-          // 抛物线运动的触发
-          // document.body.onclick = function() {
-          // element.style.marginLeft = "0px";
-          // element.style.marginTop = "0px";
-          for (var i = 0, len = parabola.length; i < len; i++) {
-            parabola[i].init()
-          }
-          // };
-        }, delay + 1000)
-
-        // 换小车方向，默认向右
-        setTimeout(function() {
-          // 换成向左
-          div.querySelector("img").style.webkitTransform = 'scaleX(-1)'
-        }, delay + 11 * baseDuration);
-        setTimeout(function() {
-          // 换回向右
-          div.querySelector("img").style.webkitTransform = ''
-        }, delay + 41 * baseDuration);
-
-        // 将外卖图标换成刹车动画
-        setTimeout(function() {
-          // 不需要先清空，否则会导致露出底图
-          // PoplayerOperator.track(start, "");
-          PoplayerOperator.track(start, waimaiImg[1])
-        }, delay + 54 * baseDuration);
-        // 移除骑车人
-        setTimeout(function() {
-          document.body.removeChild(div)
-        }, delay + 58 * baseDuration);
-        // 外卖图标换成星星闪的动画
-        setTimeout(function() {
-            PoplayerOperator.track(start, "");
-            PoplayerOperator.track(start, waimaiImg[2]);
-          }, delay + 54 * baseDuration + 1000)
-          // 外卖图标换成带 HOT 的版本，同时将所有动画关闭
-        setTimeout(function() {
-          PoplayerOperator.track(start, "");
-          PoplayerOperator.track(start, waimaiImg[3]);
-          PoplayerOperator.satisfied()
-          PoplayerOperator.finished = true
-          window.WindVane.call('WVPopLayer', 'increaseReadTimes', {})
-        }, delay + 54 * baseDuration + 1000 + 1000);
-        setTimeout(function() {
-          PoplayerOperator.track(start, '')
-          for (var i = 0; i < 9; i++) {
-            PoplayerOperator.track(icons[i], '');
-          }
-        }, delay + 54 * baseDuration + 1000 + 1000 + 1000)
-      });
+          PoplayerOperator.renderPlane(start, planeBackImg, function(planeBack) {
+            document.body.removeChild(plane)
+            setTimeout(function() {
+              document.body.removeChild(planeBack)
+            }, 1000)
+          })
+        }, delay + 1400)
+      })
     }
 
-
-
-    // 先把图片都预加载，再开始游戏
+    // 先把图片都预加载，再开始动画场景
     var preloadMap = {}
     var preloadCount = 0
-    var imageUrls = [].concat(fuzzImg).concat(eatingImg).concat(satisfiedImg)
-      .concat(waimaiImg).concat([motoImg, blankImg])
-      //.concat(staticImg)
+      // 预加载图片的链接数组
+    var imageUrls = [].concat(flagImg).concat([planeImg, planeBackImg, blankImg])
 
     function finishChecker() {
       if (preloadCount === imageUrls.length) {
-        PoplayerOperator.initTrackData(startGame)
-          // startGame()
+        PoplayerOperator.initTrackData(startScene)
       }
     }
-
+    /**
+     * 图片预加载
+     * @author shilin.zsl <shilin.zsl@alibaba-inc.com>
+     * @date   2016-05-19
+     * @param  {String}   url 图片url
+     */
     function preloadImg(url) {
       var img = new Image
 
@@ -1088,16 +1109,21 @@
       }
       img.src = url
     }
-
+    /**
+     * 图片链接数组执行预加载
+     * @author shilin.zsl <shilin.zsl@alibaba-inc.com>
+     * @date   2016-05-19
+     * @param  {[type]}   function(url [description]
+     * @return {[type]}                [description]
+     */
     imageUrls.map(function(url) {
       preloadMap[url] = 0
       return url
     }).forEach(function(url) {
       preloadImg(url)
     })
-  });
+  })
   </script>
-  <script src="//g.alicdn.com/alilog/??wlog/0.2.8/aplus_wap.js,wlog/0.2.8/spm_wap.js,wlog/0.2.8/spmact_wap.js"></script>
 </body>
 
 </html>
