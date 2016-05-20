@@ -68,6 +68,10 @@
     width: 2rem;
     margin-top: 0.14rem;
   }
+
+  .hidden {
+    visibility: hidden;
+  }
   /* 设定目标点的宽高 */
 
   #target {
@@ -115,7 +119,7 @@
   document.body.classList.add(lib.env.os.isIOS ? 'IOS' : 'ANDROID')
   </script>
   <!-- 首页icon容器 -->
-  <div class="mui-icon-container">
+  <div class="mui-icon-container hidden">
     <ul class="mui-flex">
       <li class="cell">
         <img class="element" src="//img.alicdn.com/tps/TB1WL_dJVXXXXcTXXXXXXXXXXXX-183-129.png">
@@ -344,7 +348,7 @@
 
       var defaults = {
         speed: 2400, // 每帧移动的像素大小，每帧（对于大部分显示屏）大约16~17毫秒
-        curvature: 0.002, // 实际指焦点到准线的距离，你可以抽象成曲率，这里模拟扔物体的抛物线，因此是开口向下的
+        curvature: 0, // 实际指焦点到准线的距离，你可以抽象成曲率，这里模拟扔物体的抛物线，因此是开口向下的
         progress: function() {},
         complete: function() {}
       }
@@ -539,32 +543,33 @@
      * @param  {[type]}   function( [description]
      * @return {[type]}             [description]
      */
-    ;(function() {
-      var lastTime = 0
-      var vendors = ['webkit', 'moz']
-      for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-        window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame']
-        window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || // name has changed in Webkit
-          window[vendors[x] + 'CancelRequestAnimationFrame']
-      }
+  ;
+  (function() {
+    var lastTime = 0
+    var vendors = ['webkit', 'moz']
+    for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+      window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame']
+      window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || // name has changed in Webkit
+        window[vendors[x] + 'CancelRequestAnimationFrame']
+    }
 
-      if (!window.requestAnimationFrame) {
-        window.requestAnimationFrame = function(callback, element) {
-          var currTime = new Date().getTime()
-          var timeToCall = Math.max(0, 16.7 - (currTime - lastTime))
-          var id = window.setTimeout(function() {
-            callback(currTime + timeToCall)
-          }, timeToCall)
-          lastTime = currTime + timeToCall
-          return id
-        }
+    if (!window.requestAnimationFrame) {
+      window.requestAnimationFrame = function(callback, element) {
+        var currTime = new Date().getTime()
+        var timeToCall = Math.max(0, 16.7 - (currTime - lastTime))
+        var id = window.setTimeout(function() {
+          callback(currTime + timeToCall)
+        }, timeToCall)
+        lastTime = currTime + timeToCall
+        return id
       }
-      if (!window.cancelAnimationFrame) {
-        window.cancelAnimationFrame = function(id) {
-          clearTimeout(id)
-        }
+    }
+    if (!window.cancelAnimationFrame) {
+      window.cancelAnimationFrame = function(id) {
+        clearTimeout(id)
       }
-    }())
+    }
+  }())
   </script>
   <script>
   // 首页icon视图组件区域，Android里面要从天猫国际icon向上寻找三级才能找到视图区域组件
@@ -846,25 +851,8 @@
         var blockData = me.trackData.block
         var selData = me.trackData[sel]
         var cp = me.trackData.cp
-          // top 自己算
-        var top = function() {
-          var baseTop = 8.3 * (selData.width / 44) * cp
-          var index = icons.indexOf(sel)
-            // 如果是第一排 icon
-          if (index === 0 || index > 5) {
-            return baseTop
-          }
-          // 如果不在 icons 里，就是 start
-          else if (index === -1)
-            return baseTop
-              // 如果是第二排 icon
-          else {
-            //alert( baseTop + "\t" + selData.height * cp )
-            return 14.6 * (selData.width / 44) * cp + selData.height * cp
-          }
-        }()
 
-        var offset = lib.env.os.isIOS ? 68 : 15
+        var top = lib.env.os.isIOS ? '-0.28rem' : '-0.09rem'
 
         var div = document.createElement('div')
         div.style.cssText = [
@@ -873,8 +861,7 @@
           'height:' + (selData.height * cp) + 'px',
           'width:' + (selData.width * cp) + 'px',
           'left:' + ((selData.x - blockData.x) * cp) + 'px',
-          // 'top:' + ((selData.y - blockData.y) * cp) + 'px'
-          'top:' + (top - offset) + 'px'
+          'top:' + top
         ].join(';')
         div.innerHTML = '<img src="' + imgUrl + '" width="100%">'
         document.body.appendChild(div)
@@ -1038,14 +1025,16 @@
       PoplayerOperator.renderPlane(start, planeImg, function(plane) {
         setTimeout(function() {
             var self = this
-            var elements = document.getElementsByClassName("element"),
-              target = document.getElementById("target")
+            var container = document.getElementsByClassName('mui-icon-container')[0],
+              elements = document.getElementsByClassName('element'),
+              target = document.getElementById('target')
+            container.classList.remove('hidden')
             var parabola = []
             for (var i = 0, len = elements.length; i < len; i++) {
               // 抛物线元素的的位置标记
               var ani = funParabola(elements[i], target).mark()
               parabola.push(ani)
-              // alert('test')
+                // alert('test')
             }
             // 抛物线运动
             for (var i = 0, len = parabola.length; i < len; i++) {
@@ -1064,6 +1053,8 @@
             document.body.removeChild(plane)
             setTimeout(function() {
               document.body.removeChild(planeBack)
+                // 关闭PopLayer
+                // window.WindVane.call('WVPopLayer', 'close', {})
             }, 1000)
           })
         }, delay + 1400)
