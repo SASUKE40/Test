@@ -578,9 +578,9 @@
   var start = lib.env.os.isIOS ? "UIImageView[accessibilityLabel=天猫国际]" : "android.support.v7.widget.AppCompatTextView[text=天猫国际]<"
 
   // 飞机出现图
-  var planeImg = '//img.alicdn.com/tps/TB15Vi.JVXXXXXPXVXXXXXXXXXX-183-174.gif'
+  var planeImg = '//img.alicdn.com/tps/TB1BLDiJVXXXXaeaXXXXXXXXXXX-183-174.gif'
     // 飞机消失返回图
-  var planeBackImg = '//img.alicdn.com/tps/TB1PUG9JVXXXXXpXVXXXXXXXXXX-183-174.gif'
+  var planeBackImg = '//img.alicdn.com/tps/TB1uYbOJVXXXXbRXXXXXXXXXXXX-183-174.gif'
 
   // 1x1 空白gif
   var blankImg = '//gw.alicdn.com/mt/TB19X9vJVXXXXXoXXXXXXXXXXXX-1-1.gif'
@@ -1053,8 +1053,9 @@
             document.body.removeChild(plane)
             setTimeout(function() {
               document.body.removeChild(planeBack)
+              window.WindVane.call('WVPopLayer', 'increaseReadTimes', {})
                 // 关闭PopLayer
-                // window.WindVane.call('WVPopLayer', 'close', {})
+              window.WindVane.call('WVPopLayer', 'close', {})
             }, 1000)
           })
         }, delay + 1400)
