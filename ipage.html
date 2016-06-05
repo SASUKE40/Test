@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>iPage Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+  <style type="text/css">
+  * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  html {
+    -ms-touch-action: none;
+  }
+
+  body,
+  ul,
+  li {
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+
+  body {
+    font-size: 12px;
+    font-family: ubuntu, helvetica, arial;
+    overflow: hidden;
+    /* this is important to prevent the whole page to bounce */
+  }
+
+  #wrapper {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #ccc;
+    overflow: hidden;
+  }
+
+  .scroller {
+    position: absolute;
+    z-index: 1;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none;
+  }
+
+  .scroller ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  .scroller ul li {
+    color: #fff;
+    font-size: 40px;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="wrapper">
+    <div class="scroller">
+      <ul>
+        <li class="box" style="background-color: red;">
+          <div class="scroller">
+            <ul>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>7</li>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li>11</li>
+              <li>12</li>
+              <li>13</li>
+              <li>14</li>
+              <li>15</li>
+              <li>16</li>
+              <li>17</li>
+              <li>18</li>
+              <li>19</li>
+              <li>20</li>
+              <li>21</li>
+              <li>22</li>
+              <li>23</li>
+              <li>24</li>
+              <li>25</li>
+              <li>26</li>
+              <li>27</li>
+              <li>28</li>
+              <li>29</li>
+              <li>30</li>
+              <li>31</li>
+              <li>32</li>
+              <li>33</li>
+              <li>34</li>
+              <li>35</li>
+              <li>36</li>
+              <li>37</li>
+              <li>38</li>
+              <li>39</li>
+              <li>40</li>
+            </ul>
+          </div>
+        </li>
+        <li class="box" style="background-color: blue;">
+          <div class="scroller">
+            <ul>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>7</li>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li>11</li>
+              <li>12</li>
+              <li>13</li>
+              <li>14</li>
+              <li>15</li>
+              <li>16</li>
+              <li>17</li>
+              <li>18</li>
+              <li>19</li>
+              <li>20</li>
+              <li>21</li>
+              <li>22</li>
+              <li>23</li>
+              <li>24</li>
+              <li>25</li>
+              <li>26</li>
+              <li>27</li>
+              <li>28</li>
+              <li>29</li>
+              <li>30</li>
+              <li>31</li>
+              <li>32</li>
+              <li>33</li>
+              <li>34</li>
+              <li>35</li>
+              <li>36</li>
+              <li>37</li>
+              <li>38</li>
+              <li>39</li>
+              <li>40</li>
+            </ul>
+          </div>
+        </li>
+        <li class="box" style="background-color: green;">
+          <div class="scroller">
+            <ul>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>7</li>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li>11</li>
+              <li>12</li>
+              <li>13</li>
+              <li>14</li>
+              <li>15</li>
+              <li>16</li>
+              <li>17</li>
+              <li>18</li>
+              <li>19</li>
+              <li>20</li>
+              <li>21</li>
+              <li>22</li>
+              <li>23</li>
+              <li>24</li>
+              <li>25</li>
+              <li>26</li>
+              <li>27</li>
+              <li>28</li>
+              <li>29</li>
+              <li>30</li>
+              <li>31</li>
+              <li>32</li>
+              <li>33</li>
+              <li>34</li>
+              <li>35</li>
+              <li>36</li>
+              <li>37</li>
+              <li>38</li>
+              <li>39</li>
+              <li>40</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script src="//cdn.bootcss.com/zepto/1.1.6/zepto.js"></script>
+  <script src="//cdn.bootcss.com/iScroll/5.2.0/iscroll.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    let innerScrolls = [];
+    $('.box').css('height', window.innerHeight);
+
+    let mainScroll = new IScroll('#wrapper', {
+      momentum: false,
+      snap: true
+    });
+    mainScroll.enabled = false;
+
+    $('.box').forEach((b, i) => {
+      let innerScroll = new IScroll(b);
+      innerScroll.page = i;
+      innerScrolls.push(innerScrolls);
+      innerScroll.on('scrollEnd', function() {
+        if (this.y === this.maxScrollY && this.page === mainScroll.currentPage.pageY) {
+          mainScroll.enabled = true;
+        } else {
+          mainScroll.enabled = false;
+        }
+      });
+
+    });
+  });
+
+  document.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+  }, false);
+
+  </script>
+</body>
+
+</html>

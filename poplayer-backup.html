@@ -1070,7 +1070,8 @@
 
     function finishChecker() {
       if (preloadCount === imageUrls.length) {
-        PoplayerOperator.initTrackData(startScene)
+        // PoplayerOperator.initTrackData(startScene)
+        window.WindVane.call('WVPopLayer', 'close', {})
       }
     }
     /**
