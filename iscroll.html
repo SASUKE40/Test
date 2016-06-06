@@ -1,42 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <title>iPage Demo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-  <title>iScroll demo: barebone</title>
-  <script src="//cdn.bootcss.com/iScroll/5.2.0/iscroll-lite.js"></script>
-  <script type="text/javascript">
-  var myScroll;
-
-  function loaded() {
-    myScroll = new IScroll('#wrapper');
+  <style type="text/css">
+  * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
 
-  document.addEventListener('touchmove', function(e) {
-    e.preventDefault();
-  }, false);
-  </script>
-  <style>
+  html {
+    -ms-touch-action: none;
+  }
+
+  body,
+  ul,
+  li {
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+
   body {
-    /* On modern browsers, prevent the whole page to bounce */
+    font-size: 12px;
+    font-family: ubuntu, helvetica, arial;
     overflow: hidden;
+    /* this is important to prevent the whole page to bounce */
   }
 
   #wrapper {
-    position: relative;
-    width: 300px;
-    height: 300px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #ccc;
     overflow: hidden;
-    /* Prevent native touch events on Windows */
-    -ms-touch-action: none;
-    /* Prevent the callout on tap-hold and text selection */
+  }
+
+  .scroller {
+    position: absolute;
+    z-index: 1;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    /* Prevent text resize on orientation change, useful for web-apps */
     -webkit-text-size-adjust: none;
     -moz-text-size-adjust: none;
     -ms-text-size-adjust: none;
@@ -44,29 +64,199 @@
     text-size-adjust: none;
   }
 
-  #scroller {
-    position: absolute;
-    /* Prevent elements to be highlighted on tap */
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    /* Put the scroller into the HW Compositing layer right from the start */
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    -o-transform: translateZ(0);
-    transform: translateZ(0);
+  .scroller ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  .scroller ul li {
+    color: #fff;
+    font-size: 40px;
   }
   </style>
 </head>
 
-<body onload="loaded()">
+<body>
   <div id="wrapper">
-    <div id="scroller">
-      <p><strong>This demo shows the minimum CSS/HTML/JS configuration you need to run the iScroll. Look at the source code for details.</strong></p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+    <div class="scroller">
+      <ul>
+        <li class="box" style="background-color: red;">
+          <div class="scroller">
+            <ul>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>7</li>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li>11</li>
+              <li>12</li>
+              <li>13</li>
+              <li>14</li>
+              <li>15</li>
+              <li>16</li>
+              <li>17</li>
+              <li>18</li>
+              <li>19</li>
+              <li>20</li>
+              <li>21</li>
+              <li>22</li>
+              <li>23</li>
+              <li>24</li>
+              <li>25</li>
+              <li>26</li>
+              <li>27</li>
+              <li>28</li>
+              <li>29</li>
+              <li>30</li>
+              <li>31</li>
+              <li>32</li>
+              <li>33</li>
+              <li>34</li>
+              <li>35</li>
+              <li>36</li>
+              <li>37</li>
+              <li>38</li>
+              <li>39</li>
+              <li>40</li>
+            </ul>
+          </div>
+        </li>
+        <li class="box" style="background-color: blue;">
+          <div class="scroller">
+            <ul>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>7</li>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li>11</li>
+              <li>12</li>
+              <li>13</li>
+              <li>14</li>
+              <li>15</li>
+              <li>16</li>
+              <li>17</li>
+              <li>18</li>
+              <li>19</li>
+              <li>20</li>
+              <li>21</li>
+              <li>22</li>
+              <li>23</li>
+              <li>24</li>
+              <li>25</li>
+              <li>26</li>
+              <li>27</li>
+              <li>28</li>
+              <li>29</li>
+              <li>30</li>
+              <li>31</li>
+              <li>32</li>
+              <li>33</li>
+              <li>34</li>
+              <li>35</li>
+              <li>36</li>
+              <li>37</li>
+              <li>38</li>
+              <li>39</li>
+              <li>40</li>
+            </ul>
+          </div>
+        </li>
+        <li class="box" style="background-color: green;">
+          <div class="scroller">
+            <ul>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>7</li>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li>11</li>
+              <li>12</li>
+              <li>13</li>
+              <li>14</li>
+              <li>15</li>
+              <li>16</li>
+              <li>17</li>
+              <li>18</li>
+              <li>19</li>
+              <li>20</li>
+              <li>21</li>
+              <li>22</li>
+              <li>23</li>
+              <li>24</li>
+              <li>25</li>
+              <li>26</li>
+              <li>27</li>
+              <li>28</li>
+              <li>29</li>
+              <li>30</li>
+              <li>31</li>
+              <li>32</li>
+              <li>33</li>
+              <li>34</li>
+              <li>35</li>
+              <li>36</li>
+              <li>37</li>
+              <li>38</li>
+              <li>39</li>
+              <li>40</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
+  <script src="//cdn.bootcss.com/zepto/1.1.6/zepto.js"></script>
+  <script src="//cdn.bootcss.com/iScroll/5.2.0/iscroll.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    var innerScrolls = [];
+    $('.box').css('height', window.innerHeight);
+
+    var mainScroll = new IScroll('#wrapper', {
+      momentum: false,
+      snap: true
+    });
+    mainScroll.enabled = false;
+
+    $('.box').forEach(function(b, i) {
+      var innerScroll = new IScroll(b);
+      innerScroll.page = i;
+      innerScrolls.push(innerScrolls);
+      innerScroll.on('scrollEnd', function() {
+        if (this.y === this.maxScrollY && this.page === mainScroll.currentPage.pageY) {
+          mainScroll.enabled = true;
+        } else {
+          mainScroll.enabled = false;
+        }
+      });
+
+    });
+  });
+
+  document.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+  }, false);
+
+  </script>
 </body>
 
 </html>
